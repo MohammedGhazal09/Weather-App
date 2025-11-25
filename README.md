@@ -1,22 +1,68 @@
 # Weather App
 
-A modern, responsive weather application built with React that allows users to search for weather information in any city worldwide.
+A comprehensive, scientific weather application built with React that provides detailed meteorological data for any city worldwide.
 
 ## Features
 
-- 🔍 Search weather by city name with autocomplete suggestions
-- 🌡️ Display current temperature in Celsius
-- 💧 Show humidity levels
-- 💨 Wind speed information
-- 🎯 "Feels like" temperature
-- 🌤️ UV Index
-- 🌬️ Air Quality Index (AQI) with detailed PM2.5/PM10 levels
+### Current Weather
+- 🌡️ Temperature in Celsius and Fahrenheit
+- 🎯 "Feels like" temperature with comfort assessment
+- 💧 Humidity with comfort level description
+- 🌡️ Dew point with comfort analysis
+- ☁️ Cloud cover percentage with sky condition description
+
+### Atmospheric Conditions
+- 📊 Barometric pressure with weather prediction
+- 👁️ Visibility with clarity assessment
+- 💨 Wind speed with Beaufort scale description
+- 🧭 Wind direction and degree
+- 💥 Wind gust analysis
+
+### UV & Precipitation
+- ☀️ UV Index with WHO safety recommendations
+- 🌧️ Precipitation levels with intensity description
+
+### Air Quality (Comprehensive)
+- 🌬️ US EPA Air Quality Index with health description
+- PM2.5 (Fine particles)
+- PM10 (Coarse particles)
+- O₃ (Ground-level ozone)
+- NO₂ (Nitrogen dioxide)
+- SO₂ (Sulfur dioxide)
+- CO (Carbon monoxide)
+
+### Astronomy
 - 🌅 Sunrise and sunset times
-- 🌙 Moon phase and illumination
-- 📅 3-day weather forecast
-- ⚠️ Weather alerts
-- 🎨 Beautiful gradient UI design
+- 🌙 Moonrise and moonset times
+- 🌓 Moon phase
+- 🌕 Moon illumination percentage
+
+### Extended Forecast
+- 📅 14-day weather forecast
+- Daily high/low temperatures
+- Chance of rain and snow
+- Maximum wind speeds
+- Average humidity and visibility
+- UV index per day
+- Total precipitation
+
+### Additional Features
+- ⚠️ Weather alerts with full details
+- 🔍 City search with autocomplete
+- 📍 Location coordinates display
+- 🕐 Local time for searched city
 - 📱 Fully responsive design
+
+## Scientific Descriptions
+
+All weather metrics include descriptive labels to help users understand conditions:
+- **UV Index**: Low → Moderate → High → Very High → Extreme
+- **Humidity**: Dry → Comfortable → Moderate → Humid
+- **Wind**: Calm → Light → Moderate → Fresh → Strong → Gale
+- **Visibility**: Very Poor → Poor → Moderate → Good
+- **Pressure**: Low (storm likely) → Normal → High (fair weather)
+- **Precipitation**: None → Light → Moderate → Heavy
+- **Air Quality**: Good → Moderate → Unhealthy for Sensitive → Unhealthy → Very Unhealthy → Hazardous
 
 ## Getting Started
 
@@ -56,12 +102,10 @@ The app loads with Riyadh weather by default, but you can search for any city wo
 
 ## API
 
-This app uses the [WeatherAPI.com](https://www.weatherapi.com/) to fetch weather data including:
-- Current weather conditions
-- 3-day forecast
-- Air quality data
-- Astronomy data (sunrise, sunset, moon phase)
-- Weather alerts
+This app uses the [WeatherAPI.com](https://www.weatherapi.com/) to fetch comprehensive weather data including:
+- Current weather conditions with air quality
+- 14-day extended forecast with alerts
+- Astronomy data (sun and moon)
 - City search autocomplete
 
 ## Technologies Used
