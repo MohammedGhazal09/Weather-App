@@ -32,15 +32,17 @@ function App() {
       }
 
       const data = await response.json();
+      const weatherInfo = data.weather && data.weather.length > 0 ? data.weather[0] : null;
+      
       setWeather({
         city: data.name,
-        country: data.sys.country,
+        country: data.sys?.country || '',
         temperature: Math.round(data.main.temp),
         feelsLike: Math.round(data.main.feels_like),
-        description: data.weather[0].description,
-        icon: data.weather[0].icon,
+        description: weatherInfo?.description || 'No description available',
+        icon: weatherInfo?.icon || '01d',
         humidity: data.main.humidity,
-        windSpeed: data.wind.speed,
+        windSpeed: data.wind?.speed ?? 0,
         pressure: data.main.pressure,
       });
     } catch (err) {
