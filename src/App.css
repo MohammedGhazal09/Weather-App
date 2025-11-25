@@ -657,3 +657,246 @@
     text-align: center;
   }
 }
+
+/* Additional Info Styles */
+.timezone-info {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 3px;
+}
+
+.temp-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  margin: 5px 0;
+}
+
+.temp-advice {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.feels-cause {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+.last-updated {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+/* Temperature Colors */
+.temp-freezing { background: #1a237e; }
+.temp-very-cold { background: #303f9f; }
+.temp-cold { background: #1976d2; }
+.temp-cool { background: #0288d1; }
+.temp-comfortable { background: #4caf50; }
+.temp-warm { background: #ff9800; }
+.temp-hot { background: #f44336; }
+.temp-very-hot { background: #c62828; }
+.temp-extreme { background: #b71c1c; }
+
+/* Feels Like Extended */
+.feels-accurate { background: rgba(76, 175, 80, 0.3); }
+.feels-much-warmer { background: rgba(244, 67, 54, 0.3); }
+.feels-much-colder { background: rgba(33, 150, 243, 0.4); }
+
+/* Extended Detail Styles */
+.detail-health,
+.detail-comfort,
+.detail-forecast,
+.detail-type,
+.detail-beaufort,
+.detail-impact,
+.detail-safety,
+.detail-protection,
+.detail-intensity {
+  display: block;
+  font-size: 0.7rem;
+  color: #666;
+  margin-top: 3px;
+  font-style: italic;
+}
+
+/* Extended Humidity Colors */
+.humidity-very-dry { background: #f44336; }
+.humidity-slight { background: #8bc34a; }
+.humidity-very-humid { background: #9c27b0; }
+.humidity-oppressive { background: #7b1fa2; }
+
+/* Extended Wind Colors */
+.wind-light-air { background: #e8f5e9; color: #333; }
+.wind-gentle { background: #c8e6c9; color: #333; }
+.wind-strong-breeze { background: #ff9800; }
+.wind-near-gale { background: #f57c00; }
+.wind-strong-gale { background: #e64a19; }
+.wind-storm { background: #d32f2f; }
+.wind-violent { background: #c62828; }
+.wind-hurricane { background: #b71c1c; }
+
+/* Extended Visibility Colors */
+.vis-dense-fog { background: #37474f; }
+.vis-thick-fog { background: #546e7a; }
+.vis-mod-fog { background: #78909c; }
+.vis-light-fog { background: #90a4ae; }
+.vis-mist { background: #b0bec5; color: #333; }
+.vis-haze { background: #cfd8dc; color: #333; }
+.vis-excellent { background: #00e676; color: #333; }
+
+/* Extended Pressure Colors */
+.pressure-very-low { background: #b71c1c; }
+.pressure-below { background: #ff9800; }
+.pressure-above { background: #8bc34a; }
+
+/* Extended Cloud Colors */
+.cloud-few { background: #ffe082; color: #333; }
+.cloud-scattered { background: #e0e0e0; color: #333; }
+.cloud-broken { background: #9e9e9e; }
+
+/* Extended Precipitation Colors */
+.precip-trace { background: #e3f2fd; color: #333; }
+.precip-very-heavy { background: #1565c0; }
+.precip-extreme { background: #0d47a1; }
+
+/* Extended Dew Point Colors */
+.dew-very-dry { background: #ff9800; }
+.dew-pleasant { background: #8bc34a; }
+.dew-very-humid { background: #7b1fa2; }
+.dew-tropical { background: #4a148c; }
+
+/* Extended Gust Colors */
+.gust-light { background: #c8e6c9; color: #333; }
+.gust-dangerous { background: #e64a19; }
+.gust-extreme { background: #b71c1c; }
+
+/* AQI Section Enhanced */
+.aqi-health-impact {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+  margin: 10px 0 15px 0;
+  padding: 10px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+.aqi-item-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: white;
+  margin-top: 5px;
+}
+
+.aqi-extra {
+  font-size: 0.8rem;
+  color: #888;
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* PM Colors */
+.pm-good { background: #4caf50; }
+.pm-moderate { background: #ffeb3b; color: #333; }
+.pm-sensitive { background: #ff9800; }
+.pm-unhealthy { background: #f44336; }
+.pm-very-unhealthy { background: #9c27b0; }
+.pm-hazardous { background: #7b1fa2; }
+
+/* Ozone Colors */
+.o3-good { background: #4caf50; }
+.o3-moderate { background: #ffeb3b; color: #333; }
+.o3-sensitive { background: #ff9800; }
+.o3-unhealthy { background: #f44336; }
+.o3-very-unhealthy { background: #9c27b0; }
+
+/* NO2 Colors */
+.no2-good { background: #4caf50; }
+.no2-moderate { background: #ffeb3b; color: #333; }
+.no2-sensitive { background: #ff9800; }
+.no2-unhealthy { background: #f44336; }
+.no2-very-unhealthy { background: #9c27b0; }
+
+/* SO2 Colors */
+.so2-good { background: #4caf50; }
+.so2-moderate { background: #ffeb3b; color: #333; }
+.so2-sensitive { background: #ff9800; }
+.so2-unhealthy { background: #f44336; }
+.so2-very-unhealthy { background: #9c27b0; }
+
+/* CO Colors */
+.co-good { background: #4caf50; }
+.co-moderate { background: #ffeb3b; color: #333; }
+.co-sensitive { background: #ff9800; }
+.co-unhealthy { background: #f44336; }
+.co-very-unhealthy { background: #9c27b0; }
+
+/* Astronomy Section Enhanced */
+.astronomy-desc {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+.astronomy-item-wide {
+  grid-column: span 2;
+}
+
+/* Forecast Enhanced */
+.forecast-temp-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.forecast-summary {
+  font-size: 0.7rem;
+  color: #555;
+  margin: 8px 0;
+  padding: 8px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 8px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Alert Section Enhanced */
+.alert-severity,
+.alert-urgency,
+.alert-areas,
+.alert-category,
+.alert-certainty {
+  font-size: 0.8rem;
+  color: #555;
+  margin: 3px 0;
+}
+
+.alert-instruction {
+  font-size: 0.85rem;
+  color: #e65100;
+  margin-top: 8px;
+  padding: 10px;
+  background: #fff8e1;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .astronomy-item-wide {
+    grid-column: span 1;
+  }
+}
