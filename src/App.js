@@ -8,13 +8,18 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const API_KEY = process.env.REACT_APP_WEATHER_API_KEY || 'YOUR_API_KEY';
+  const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
   const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
   const getWeather = async (e) => {
     e.preventDefault();
     if (!city.trim()) {
       setError('Please enter a city name');
+      return;
+    }
+
+    if (!API_KEY) {
+      setError('API key not configured. Please set REACT_APP_WEATHER_API_KEY environment variable.');
       return;
     }
 
