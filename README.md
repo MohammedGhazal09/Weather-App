@@ -4,12 +4,17 @@ A modern, responsive weather application built with React that allows users to s
 
 ## Features
 
-- 🔍 Search weather by city name
+- 🔍 Search weather by city name with autocomplete suggestions
 - 🌡️ Display current temperature in Celsius
 - 💧 Show humidity levels
 - 💨 Wind speed information
 - 🎯 "Feels like" temperature
-- 📊 Atmospheric pressure data
+- 🌤️ UV Index
+- 🌬️ Air Quality Index (AQI) with detailed PM2.5/PM10 levels
+- 🌅 Sunrise and sunset times
+- 🌙 Moon phase and illumination
+- 📅 3-day weather forecast
+- ⚠️ Weather alerts
 - 🎨 Beautiful gradient UI design
 - 📱 Fully responsive design
 
@@ -19,7 +24,6 @@ A modern, responsive weather application built with React that allows users to s
 
 - Node.js (v14 or higher)
 - npm or yarn
-- OpenWeatherMap API key (get one free at [openweathermap.org](https://openweathermap.org/api))
 
 ### Installation
 
@@ -34,17 +38,14 @@ cd Weather-App
 npm install
 ```
 
-3. Create a `.env` file in the root directory and add your OpenWeatherMap API key:
-```
-REACT_APP_WEATHER_API_KEY=your_api_key_here
-```
-
-4. Start the development server:
+3. Start the development server:
 ```bash
 npm start
 ```
 
 The app will open in your browser at [http://localhost:3000](http://localhost:3000).
+
+The app loads with Riyadh weather by default, but you can search for any city worldwide.
 
 ## Available Scripts
 
@@ -55,14 +56,20 @@ The app will open in your browser at [http://localhost:3000](http://localhost:30
 
 ## API
 
-This app uses the [OpenWeatherMap API](https://openweathermap.org/api) to fetch weather data. You need a free API key to use this application.
+This app uses the [WeatherAPI.com](https://www.weatherapi.com/) to fetch weather data including:
+- Current weather conditions
+- 3-day forecast
+- Air quality data
+- Astronomy data (sunrise, sunset, moon phase)
+- Weather alerts
+- City search autocomplete
 
 ## Technologies Used
 
 - React 19
 - Axios for API calls
 - CSS3 with modern features (Grid, Flexbox, Gradients)
-- OpenWeatherMap API
+- WeatherAPI.com
 
 ## License
 
