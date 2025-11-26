@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './App.css';
 
@@ -10,13 +10,115 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [suggestions, setSuggestions] = useState([]);
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('weatherAppTheme');
+    return savedTheme || 'light';
+  });
+  const [locationLoading, setLocationLoading] = useState(false);
+  const [locationError, setLocationError] = useState('');
 
   const API_KEY = '16e76914aa244ae3bc8141253252511';
   const BASE_URL = 'https://api.weatherapi.com/v1';
 
+  // Apply theme to document
   useEffect(() => {
-    fetchWeatherData('Riyadh');
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('weatherAppTheme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  };
+
+  // Fetch weather by coordinates
+  const fetchWeatherByCoords = useCallback(async (lat, lon) => {
+    setLoading(true);
+    setError('');
+    setSuggestions([]);
+
+    try {
+      const coordQuery = `${lat},${lon}`;
+      const [currentRes, forecastRes, astronomyRes] = await Promise.all([
+        axios.get(`${BASE_URL}/current.json`, {
+          params: { key: API_KEY, q: coordQuery, aqi: 'yes' }
+        }),
+        axios.get(`${BASE_URL}/forecast.json`, {
+          params: { key: API_KEY, q: coordQuery, days: 14, alerts: 'yes' }
+        }),
+        axios.get(`${BASE_URL}/astronomy.json`, {
+          params: { key: API_KEY, q: coordQuery, dt: new Date().toISOString().split('T')[0] }
+        })
+      ]);
+
+      setWeather(currentRes.data);
+      setForecast(forecastRes.data);
+      setAstronomy(astronomyRes.data);
+      setCity(currentRes.data.location.name);
+    } catch (err) {
+      if (err.response && err.response.status === 400) {
+        setError('Location not found. Please try searching for a city.');
+      } else {
+        setError('Failed to fetch weather data. Please try again.');
+      }
+      setWeather(null);
+      setForecast(null);
+      setAstronomy(null);
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  // Get user's current location
+  const getCurrentLocation = useCallback(() => {
+    setLocationLoading(true);
+    setLocationError('');
+
+    if (!navigator.geolocation) {
+      setLocationError('Geolocation is not supported by your browser');
+      setLocationLoading(false);
+      // Fallback to Riyadh
+      fetchWeatherData('Riyadh');
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        fetchWeatherByCoords(latitude, longitude);
+        setLocationLoading(false);
+      },
+      (err) => {
+        let errorMessage = 'Unable to get your location. ';
+        switch (err.code) {
+          case err.PERMISSION_DENIED:
+            errorMessage += 'Location permission denied.';
+            break;
+          case err.POSITION_UNAVAILABLE:
+            errorMessage += 'Location information unavailable.';
+            break;
+          case err.TIMEOUT:
+            errorMessage += 'Location request timed out.';
+            break;
+          default:
+            errorMessage += 'An unknown error occurred.';
+        }
+        setLocationError(errorMessage);
+        setLocationLoading(false);
+        // Fallback to Riyadh
+        fetchWeatherData('Riyadh');
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 300000 // 5 minutes cache
+      }
+    );
+  }, [fetchWeatherByCoords]);
+
+  useEffect(() => {
+    // Try to get user's location on initial load
+    getCurrentLocation();
+  }, [getCurrentLocation]);
 
   const fetchWeatherData = async (searchCity) => {
     setLoading(true);
@@ -363,10 +465,34 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className={`app ${theme}`}>
       <div className="container">
+        <div className="header-controls">
+          <button 
+            className="theme-toggle" 
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          >
+            {theme === 'light' ? '🌙' : '☀️'}
+            <span className="theme-label">{theme === 'light' ? 'Dark' : 'Light'}</span>
+          </button>
+          <button 
+            className="location-button" 
+            onClick={getCurrentLocation}
+            disabled={locationLoading}
+            aria-label="Get current location"
+          >
+            {locationLoading ? '⏳' : '📍'}
+            <span className="location-label">
+              {locationLoading ? 'Locating...' : 'My Location'}
+            </span>
+          </button>
+        </div>
+
         <h1 className="title">Weather App</h1>
         <p className="date">{formatDate()}</p>
+
+        {locationError && <p className="location-notice">{locationError}</p>}
         
         <form onSubmit={handleSubmit} className="search-form">
           <div className="search-wrapper">
