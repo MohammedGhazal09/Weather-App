@@ -20,6 +20,8 @@
   --error-bg: #fee;
   --error-text: #c00;
   --suggestion-hover: #f5f5f5;
+  --location-notice-bg: #fff3e0;
+  --location-notice-text: #e65100;
 }
 
 [data-theme="dark"] {
@@ -37,6 +39,8 @@
   --error-bg: #3d1f1f;
   --error-text: #ff6b6b;
   --suggestion-hover: #35354f;
+  --location-notice-bg: #3d2d1f;
+  --location-notice-text: #ffb74d;
 }
 
 .app {
@@ -115,18 +119,14 @@
 }
 
 .location-notice {
-  background: #fff3e0;
-  color: #e65100;
+  background: var(--location-notice-bg);
+  color: var(--location-notice-text);
   padding: 10px 15px;
   border-radius: 8px;
   text-align: center;
   margin-bottom: 15px;
   font-size: 0.85rem;
-}
-
-[data-theme="dark"] .location-notice {
-  background: #3d2d1f;
-  color: #ffb74d;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .title {

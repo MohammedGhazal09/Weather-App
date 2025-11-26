@@ -7,10 +7,11 @@ jest.mock('axios', () => ({
 }));
 
 // Mock geolocation
+const PERMISSION_DENIED = 1;
 const mockGeolocation = {
   getCurrentPosition: jest.fn((success, error) => {
     // Simulate geolocation error to fallback to Riyadh
-    error({ code: 1, message: 'Permission denied' });
+    error({ code: PERMISSION_DENIED, message: 'Permission denied' });
   }),
   watchPosition: jest.fn(),
   clearWatch: jest.fn(),

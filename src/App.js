@@ -11,8 +11,12 @@ function App() {
   const [error, setError] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('weatherAppTheme');
-    return savedTheme || 'light';
+    try {
+      const savedTheme = localStorage.getItem('weatherAppTheme');
+      return savedTheme || 'light';
+    } catch {
+      return 'light';
+    }
   });
   const [locationLoading, setLocationLoading] = useState(false);
   const [locationError, setLocationError] = useState('');
@@ -23,7 +27,11 @@ function App() {
   // Apply theme to document
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('weatherAppTheme', theme);
+    try {
+      localStorage.setItem('weatherAppTheme', theme);
+    } catch {
+      // localStorage may be unavailable in some environments
+    }
   }, [theme]);
 
   const toggleTheme = () => {
