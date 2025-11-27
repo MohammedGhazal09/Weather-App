@@ -171,6 +171,12 @@ const translations = {
     highUV: 'High UV.',
     typicalConditions: 'Typical conditions for the day.',
     unknown: 'Unknown',
+    // Aria labels for accessibility
+    switchToArabicAria: 'Switch to Arabic',
+    switchToEnglishAria: 'Switch to English',
+    switchToDarkMode: 'Switch to dark mode',
+    switchToLightMode: 'Switch to light mode',
+    getCurrentLocation: 'Get current location',
   },
   ar: {
     title: 'تطبيق الطقس',
@@ -339,6 +345,12 @@ const translations = {
     highUV: 'أشعة UV مرتفعة.',
     typicalConditions: 'أجواء نموذجية لهذا اليوم.',
     unknown: 'غير معروف',
+    // Aria labels for accessibility
+    switchToArabicAria: 'التبديل إلى العربية',
+    switchToEnglishAria: 'التبديل إلى الإنجليزية',
+    switchToDarkMode: 'التبديل إلى الوضع الداكن',
+    switchToLightMode: 'التبديل إلى الوضع الفاتح',
+    getCurrentLocation: 'الحصول على الموقع الحالي',
   }
 };
 
@@ -404,7 +416,7 @@ function App() {
     setLanguage(prevLang => prevLang === 'en' ? 'ar' : 'en');
   };
 
-  // Fetch weather by city
+  // Fetch weather by city - using error codes to avoid t dependency
   const fetchWeatherData = useCallback(async (searchCity) => {
     setLoading(true);
     setError('');
@@ -427,10 +439,11 @@ function App() {
       setForecast(forecastRes.data);
       setAstronomy(astronomyRes.data);
     } catch (err) {
+      // Use error keys that will be translated in the render
       if (err.response && err.response.status === 400) {
-        setError(t('cityNotFound'));
+        setError('ERROR_CITY_NOT_FOUND');
       } else {
-        setError(t('failedToFetch'));
+        setError('ERROR_FAILED_TO_FETCH');
       }
       setWeather(null);
       setForecast(null);
@@ -438,9 +451,9 @@ function App() {
     } finally {
       setLoading(false);
     }
-  }, [t]);
+  }, []);
 
-  // Fetch weather by coordinates
+  // Fetch weather by coordinates - using error codes to avoid t dependency
   const fetchWeatherByCoords = useCallback(async (lat, lon) => {
     setLoading(true);
     setError('');
@@ -465,10 +478,11 @@ function App() {
       setAstronomy(astronomyRes.data);
       setCity(currentRes.data.location.name);
     } catch (err) {
+      // Use error keys that will be translated in the render
       if (err.response && err.response.status === 400) {
-        setError(t('locationNotFound'));
+        setError('ERROR_LOCATION_NOT_FOUND');
       } else {
-        setError(t('failedToFetch'));
+        setError('ERROR_FAILED_TO_FETCH');
       }
       setWeather(null);
       setForecast(null);
@@ -476,15 +490,15 @@ function App() {
     } finally {
       setLoading(false);
     }
-  }, [t]);
+  }, []);
 
-  // Get user's current location
+  // Get user's current location - using error codes to avoid t dependency
   const getCurrentLocation = useCallback(() => {
     setLocationLoading(true);
     setLocationError('');
 
     if (!navigator.geolocation) {
-      setLocationError(t('geolocationNotSupported'));
+      setLocationError('ERROR_GEOLOCATION_NOT_SUPPORTED');
       setLocationLoading(false);
       // Fallback to Riyadh
       fetchWeatherData('Riyadh');
@@ -498,21 +512,22 @@ function App() {
         setLocationLoading(false);
       },
       (err) => {
-        let errorMessage = t('unableToGetLocation');
+        // Use error codes that will be translated in the render
+        let errorCode = 'ERROR_UNABLE_TO_GET_LOCATION';
         switch (err.code) {
           case err.PERMISSION_DENIED:
-            errorMessage += t('locationPermissionDenied');
+            errorCode = 'ERROR_PERMISSION_DENIED';
             break;
           case err.POSITION_UNAVAILABLE:
-            errorMessage += t('locationUnavailable');
+            errorCode = 'ERROR_POSITION_UNAVAILABLE';
             break;
           case err.TIMEOUT:
-            errorMessage += t('locationTimeout');
+            errorCode = 'ERROR_TIMEOUT';
             break;
           default:
-            errorMessage += t('unknownError');
+            errorCode = 'ERROR_UNKNOWN';
         }
-        setLocationError(errorMessage);
+        setLocationError(errorCode);
         setLocationLoading(false);
         // Fallback to Riyadh
         fetchWeatherData('Riyadh');
@@ -523,7 +538,7 @@ function App() {
         maximumAge: 300000 // 5 minutes cache
       }
     );
-  }, [fetchWeatherByCoords, fetchWeatherData, t]);
+  }, [fetchWeatherByCoords, fetchWeatherData]);
 
   useEffect(() => {
     // Try to get user's location on initial load
@@ -561,10 +576,27 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!city.trim()) {
-      setError(t('enterCity'));
+      setError('ERROR_ENTER_CITY');
       return;
     }
     fetchWeatherData(city);
+  };
+
+  // Helper function to translate error codes
+  const getErrorMessage = (errorCode) => {
+    const errorMap = {
+      'ERROR_CITY_NOT_FOUND': t('cityNotFound'),
+      'ERROR_FAILED_TO_FETCH': t('failedToFetch'),
+      'ERROR_LOCATION_NOT_FOUND': t('locationNotFound'),
+      'ERROR_GEOLOCATION_NOT_SUPPORTED': t('geolocationNotSupported'),
+      'ERROR_UNABLE_TO_GET_LOCATION': t('unableToGetLocation'),
+      'ERROR_PERMISSION_DENIED': t('unableToGetLocation') + t('locationPermissionDenied'),
+      'ERROR_POSITION_UNAVAILABLE': t('unableToGetLocation') + t('locationUnavailable'),
+      'ERROR_TIMEOUT': t('unableToGetLocation') + t('locationTimeout'),
+      'ERROR_UNKNOWN': t('unableToGetLocation') + t('unknownError'),
+      'ERROR_ENTER_CITY': t('enterCity'),
+    };
+    return errorMap[errorCode] || errorCode;
   };
 
   const formatDate = () => {
@@ -846,7 +878,7 @@ function App() {
           <button 
             className="language-toggle" 
             onClick={toggleLanguage}
-            aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
+            aria-label={language === 'en' ? t('switchToArabicAria') : t('switchToEnglishAria')}
           >
             🌐
             <span className="language-label">{language === 'en' ? t('switchToArabic') : t('switchToEnglish')}</span>
@@ -854,7 +886,7 @@ function App() {
           <button 
             className="theme-toggle" 
             onClick={toggleTheme}
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            aria-label={theme === 'light' ? t('switchToDarkMode') : t('switchToLightMode')}
           >
             {theme === 'light' ? '🌙' : '☀️'}
             <span className="theme-label">{theme === 'light' ? t('dark') : t('light')}</span>
@@ -863,7 +895,7 @@ function App() {
             className="location-button" 
             onClick={getCurrentLocation}
             disabled={locationLoading}
-            aria-label="Get current location"
+            aria-label={t('getCurrentLocation')}
           >
             {locationLoading ? '⏳' : '📍'}
             <span className="location-label">
@@ -875,7 +907,7 @@ function App() {
         <h1 className="title">{t('title')}</h1>
         <p className="date">{formatDate()}</p>
 
-        {locationError && <p className="location-notice">{locationError}</p>}
+        {locationError && <p className="location-notice">{getErrorMessage(locationError)}</p>}
         
         <form onSubmit={handleSubmit} className="search-form">
           <div className="search-wrapper">
@@ -905,7 +937,7 @@ function App() {
           </button>
         </form>
 
-        {error && <p className="error">{error}</p>}
+        {error && <p className="error">{getErrorMessage(error)}</p>}
 
         {weather && (
           <div className="weather-card">

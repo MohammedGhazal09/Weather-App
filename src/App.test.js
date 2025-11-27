@@ -61,7 +61,7 @@ test('renders theme toggle button', async () => {
   await act(async () => {
     render(<App />);
   });
-  const themeButton = screen.getByRole('button', { name: /Switch to dark mode/i });
+  const themeButton = screen.getByRole('button', { name: /Switch to dark mode|التبديل إلى الوضع الداكن/i });
   expect(themeButton).toBeInTheDocument();
 });
 
@@ -69,7 +69,7 @@ test('renders location button', async () => {
   await act(async () => {
     render(<App />);
   });
-  const locationButton = screen.getByRole('button', { name: /Get current location/i });
+  const locationButton = screen.getByRole('button', { name: /Get current location|الحصول على الموقع الحالي/i });
   expect(locationButton).toBeInTheDocument();
 });
 
@@ -77,7 +77,7 @@ test('renders language toggle button', async () => {
   await act(async () => {
     render(<App />);
   });
-  const languageButton = screen.getByRole('button', { name: /Switch to Arabic/i });
+  const languageButton = screen.getByRole('button', { name: /Switch to Arabic|التبديل إلى العربية/i });
   expect(languageButton).toBeInTheDocument();
 });
 
