@@ -177,6 +177,287 @@ const translations = {
     switchToDarkMode: 'Switch to dark mode',
     switchToLightMode: 'Switch to light mode',
     getCurrentLocation: 'Get current location',
+    // Detailed AQI health descriptions
+    aqiHealthGood: 'Air quality is satisfactory, poses little or no health risk',
+    aqiHealthModerate: 'Acceptable quality, moderate health concern for sensitive individuals',
+    aqiHealthSensitive: 'Members of sensitive groups may experience health effects',
+    aqiHealthUnhealthy: 'Everyone may begin to experience health effects',
+    aqiHealthVeryUnhealthy: 'Health alert: everyone may experience serious health effects',
+    aqiHealthHazardous: 'Health emergency: entire population is likely to be affected',
+    // PM2.5 descriptions
+    pm25Good: 'Good',
+    pm25Moderate: 'Moderate',
+    pm25Sensitive: 'Unhealthy (Sensitive)',
+    pm25Unhealthy: 'Unhealthy',
+    pm25VeryUnhealthy: 'Very Unhealthy',
+    pm25Hazardous: 'Hazardous',
+    pm25DescGood: 'Little to no risk',
+    pm25DescModerate: 'Acceptable for most',
+    pm25DescSensitive: 'Sensitive groups at risk',
+    pm25DescUnhealthy: 'Everyone may experience effects',
+    pm25DescVeryUnhealthy: 'Serious health effects',
+    pm25DescHazardous: 'Emergency conditions',
+    // PM10 description
+    pm10Desc: 'Dust, pollen, and mold spores',
+    // Ozone descriptions
+    o3Good: 'Good',
+    o3Moderate: 'Moderate',
+    o3Sensitive: 'Unhealthy (Sensitive)',
+    o3Unhealthy: 'Unhealthy',
+    o3VeryUnhealthy: 'Very Unhealthy',
+    o3DescGood: 'No health impacts',
+    o3DescModerate: 'Unusually sensitive may react',
+    o3DescSensitive: 'Reduce prolonged outdoor exertion',
+    o3DescUnhealthy: 'Avoid prolonged outdoor exertion',
+    o3DescVeryUnhealthy: 'Avoid all outdoor exertion',
+    // NO2 descriptions
+    no2Good: 'Good',
+    no2Moderate: 'Moderate',
+    no2Sensitive: 'Unhealthy (Sensitive)',
+    no2Unhealthy: 'Unhealthy',
+    no2VeryUnhealthy: 'Very Unhealthy',
+    no2DescGood: 'Safe levels',
+    no2DescModerate: 'Generally acceptable',
+    no2DescSensitive: 'May worsen respiratory issues',
+    no2DescUnhealthy: 'Respiratory irritation likely',
+    no2DescVeryUnhealthy: 'Serious respiratory effects',
+    // SO2 descriptions
+    so2Good: 'Good',
+    so2Moderate: 'Moderate',
+    so2Sensitive: 'Unhealthy (Sensitive)',
+    so2Unhealthy: 'Unhealthy',
+    so2VeryUnhealthy: 'Very Unhealthy',
+    so2DescGood: 'No health concern',
+    so2DescModerate: 'Acceptable for most',
+    so2DescSensitive: 'Asthmatics may react',
+    so2DescUnhealthy: 'Breathing difficulties possible',
+    so2DescVeryUnhealthy: 'Serious respiratory effects',
+    // CO descriptions
+    coGood: 'Good',
+    coModerate: 'Moderate',
+    coSensitive: 'Unhealthy (Sensitive)',
+    coUnhealthy: 'Unhealthy',
+    coVeryUnhealthy: 'Very Unhealthy',
+    coDescGood: 'Safe levels',
+    coDescModerate: 'Generally safe',
+    coDescSensitive: 'Heart patients may be affected',
+    coDescUnhealthy: 'May affect cardiovascular health',
+    coDescVeryUnhealthy: 'Significant health risk',
+    // UV detailed descriptions
+    uvDescLow: 'No protection needed',
+    uvDescModerate: 'Seek shade during midday',
+    uvDescHigh: 'Reduce sun exposure 10am-4pm',
+    uvDescVeryHigh: 'Extra protection essential',
+    uvDescExtreme: 'Unprotected skin burns quickly',
+    uvProtectionLow: 'Wear sunglasses on bright days',
+    uvProtectionModerate: 'Apply SPF 30+ sunscreen, wear hat',
+    uvProtectionHigh: 'SPF 30+ sunscreen, protective clothing required',
+    uvProtectionVeryHigh: 'SPF 50+ sunscreen, avoid sun 10am-4pm',
+    uvProtectionExtreme: 'Stay indoors during peak hours, maximum protection',
+    // Humidity detailed descriptions
+    humidityDescVeryDry: 'Extremely low moisture',
+    humidityDescDry: 'Low moisture levels',
+    humidityDescComfortable: 'Ideal humidity range',
+    humidityDescSlightlyHumid: 'Slightly elevated moisture',
+    humidityDescHumid: 'Noticeable humidity',
+    humidityDescVeryHumid: 'High moisture content',
+    humidityDescOppressive: 'Extremely high humidity',
+    humidityHealthVeryDry: 'May cause dry skin, eyes, and respiratory irritation',
+    humidityHealthDry: 'Moisturizer and hydration recommended',
+    humidityHealthComfortable: 'Optimal for health and comfort',
+    humidityHealthSlightlyHumid: 'Generally comfortable for most people',
+    humidityHealthHumid: 'May feel sticky, mold growth possible',
+    humidityHealthVeryHumid: 'Discomfort likely, stay hydrated',
+    humidityHealthOppressive: 'Heat exhaustion risk, limit outdoor activity',
+    // Wind detailed descriptions
+    windDescCalm: 'Smoke rises vertically',
+    windDescLightAir: 'Smoke drifts with wind',
+    windDescLightBreeze: 'Wind felt on face, leaves rustle',
+    windDescGentleBreeze: 'Leaves and small twigs move',
+    windDescModerateBreeze: 'Small branches move, raises dust',
+    windDescFreshBreeze: 'Small trees sway',
+    windDescStrongBreeze: 'Large branches move, umbrellas difficult',
+    windDescNearGale: 'Whole trees sway, difficult to walk',
+    windDescGale: 'Twigs break off trees',
+    windDescStrongGale: 'Light structural damage possible',
+    windDescStorm: 'Trees uprooted, considerable damage',
+    windDescViolentStorm: 'Widespread damage',
+    windDescHurricane: 'Devastating damage',
+    // Beaufort scale labels
+    beaufort0: 'Beaufort 0',
+    beaufort1: 'Beaufort 1',
+    beaufort2: 'Beaufort 2',
+    beaufort3: 'Beaufort 3',
+    beaufort4: 'Beaufort 4',
+    beaufort5: 'Beaufort 5',
+    beaufort6: 'Beaufort 6',
+    beaufort7: 'Beaufort 7',
+    beaufort8: 'Beaufort 8',
+    beaufort9: 'Beaufort 9',
+    beaufort10: 'Beaufort 10',
+    beaufort11: 'Beaufort 11',
+    beaufort12: 'Beaufort 12+',
+    // Visibility detailed descriptions
+    visDescDenseFog: 'Near zero visibility',
+    visDescThickFog: 'Visibility under 200m',
+    visDescModerateFog: 'Visibility under 500m',
+    visDescLightFog: 'Visibility under 1km',
+    visDescMist: 'Visibility 1-2km',
+    visDescHaze: 'Visibility 2-4km',
+    visDescModerate: 'Visibility 4-10km',
+    visDescGood: 'Visibility 10-20km',
+    visDescExcellent: 'Visibility over 20km',
+    visSafetyDenseFog: 'Extremely dangerous for travel',
+    visSafetyThickFog: 'Roads likely closed, avoid travel',
+    visSafetyModerateFog: 'Reduce speed significantly, use fog lights',
+    visSafetyLightFog: 'Drive with caution, low beams',
+    visSafetyMist: 'Reduced visibility, stay alert',
+    visSafetyHaze: 'Light haze, drive normally',
+    visSafetyModerate: 'Good driving conditions',
+    visSafetyGood: 'Clear conditions for travel',
+    visSafetyExcellent: 'Crystal clear conditions',
+    // Pressure detailed descriptions
+    pressureDescVeryLow: 'Storm conditions likely',
+    pressureDescLow: 'Unsettled weather',
+    pressureDescBelowNormal: 'Slightly unstable',
+    pressureDescNormal: 'Stable conditions',
+    pressureDescAboveNormal: 'Stable high pressure',
+    pressureDescHigh: 'Very stable atmosphere',
+    pressureForecastVeryLow: 'Expect severe weather, strong winds',
+    pressureForecastLow: 'Rain or storms likely approaching',
+    pressureForecastBelowNormal: 'Cloudy with possible precipitation',
+    pressureForecastNormal: 'Fair weather expected',
+    pressureForecastAboveNormal: 'Clear and dry conditions',
+    pressureForecastHigh: 'Extended fair weather likely',
+    // Cloud descriptions
+    cloudClear: 'Clear',
+    cloudFew: 'Few Clouds',
+    cloudScattered: 'Scattered',
+    cloudBroken: 'Broken',
+    cloudMostly: 'Mostly Cloudy',
+    cloudOvercast: 'Overcast',
+    cloudDescClear: 'Virtually cloudless sky',
+    cloudDescFew: '1-2 oktas coverage',
+    cloudDescScattered: '3-4 oktas coverage',
+    cloudDescBroken: '5-7 oktas coverage',
+    cloudDescMostly: '7-8 oktas coverage',
+    cloudDescOvercast: 'Complete cloud coverage',
+    cloudTypeClear: 'SKC (Sky Clear)',
+    cloudTypeFew: 'FEW',
+    cloudTypeScattered: 'SCT (Scattered)',
+    cloudTypeBroken: 'BKN (Broken)',
+    cloudTypeMostly: 'BKN-OVC',
+    cloudTypeOvercast: 'OVC (Overcast)',
+    // Precipitation descriptions
+    precipNone: 'None',
+    precipTrace: 'Trace',
+    precipLight: 'Light',
+    precipModerate: 'Moderate',
+    precipHeavy: 'Heavy',
+    precipVeryHeavy: 'Very Heavy',
+    precipExtreme: 'Extreme',
+    precipDescNone: 'No precipitation',
+    precipDescTrace: 'Barely measurable',
+    precipDescLight: 'Light precipitation',
+    precipDescModerate: 'Steady precipitation',
+    precipDescHeavy: 'Heavy precipitation',
+    precipDescVeryHeavy: 'Intense precipitation',
+    precipDescExtreme: 'Torrential precipitation',
+    precipIntensityNone: 'Dry conditions',
+    precipIntensityTrace: 'Very light drizzle',
+    precipIntensityLight: 'Drizzle or light rain',
+    precipIntensityModerate: 'Moderate rain, umbrella needed',
+    precipIntensityHeavy: 'Heavy rain, flooding possible',
+    precipIntensityVeryHeavy: 'Severe rain, flash flood risk',
+    precipIntensityExtreme: 'Dangerous flooding likely',
+    // Feels Like descriptions
+    feelsAccurate: 'Accurate',
+    feelsSimilar: 'Similar',
+    feelsWarmer: 'Warmer',
+    feelsMuchWarmer: 'Much Warmer',
+    feelsColder: 'Colder',
+    feelsMuchColder: 'Much Colder',
+    feelsDescAccurate: 'Feels as shown',
+    feelsDescSimilar: 'Close to actual',
+    feelsDescWarmer: 'Feels warmer than actual',
+    feelsDescMuchWarmer: 'Significantly warmer',
+    feelsDescColder: 'Feels colder than actual',
+    feelsDescMuchColder: 'Significantly colder',
+    feelsCauseAccurate: 'Minimal wind and humidity effect',
+    feelsCauseSimilar: 'Minor environmental factors',
+    feelsCauseWarmer: 'High humidity trapping heat',
+    feelsCauseMuchWarmer: 'Extreme humidity - heat index warning',
+    feelsCauseColder: 'Wind chill effect',
+    feelsCauseMuchColder: 'Strong wind chill - frostbite risk',
+    // Dew Point descriptions
+    dewVeryDry: 'Very Dry',
+    dewDry: 'Dry',
+    dewComfortable: 'Comfortable',
+    dewPleasant: 'Pleasant',
+    dewSlightlyHumid: 'Slightly Humid',
+    dewHumid: 'Humid',
+    dewVeryHumid: 'Very Humid',
+    dewTropical: 'Tropical',
+    dewDescVeryDry: 'Extremely dry air',
+    dewDescDry: 'Dry and pleasant',
+    dewDescComfortable: 'Comfortable humidity',
+    dewDescPleasant: 'Pleasant conditions',
+    dewDescSlightlyHumid: 'Becoming noticeable',
+    dewDescHumid: 'Humid conditions',
+    dewDescVeryHumid: 'Very humid air',
+    dewDescTropical: 'Tropical humidity levels',
+    dewComfortVeryDry: 'May irritate skin and airways',
+    dewComfortDry: 'Very comfortable conditions',
+    dewComfortComfortable: 'Ideal for most activities',
+    dewComfortPleasant: 'Comfortable for outdoor activities',
+    dewComfortSlightlyHumid: 'May feel slightly muggy',
+    dewComfortHumid: 'Uncomfortable for some people',
+    dewComfortVeryHumid: 'Oppressive, sweating ineffective',
+    dewComfortTropical: 'Severely uncomfortable, heat risk',
+    // Gust descriptions
+    gustSteady: 'Steady',
+    gustLight: 'Light Gusts',
+    gustGusty: 'Gusty',
+    gustVery: 'Very Gusty',
+    gustDangerous: 'Dangerous Gusts',
+    gustExtreme: 'Extreme Gusts',
+    gustDescSteady: 'Consistent wind flow',
+    gustDescLight: 'Minor wind variations',
+    gustDescGusty: 'Noticeable gusts',
+    gustDescVery: 'Strong sudden gusts',
+    gustDescDangerous: 'Potentially dangerous',
+    gustDescExtreme: 'Extremely dangerous',
+    gustImpactSteady: 'Predictable wind conditions',
+    gustImpactLight: 'Occasional stronger bursts',
+    gustImpactGusty: 'May affect balance, loose items',
+    gustImpactVery: 'Difficult conditions for outdoor activities',
+    gustImpactDangerous: 'Risk of property damage, stay alert',
+    gustImpactExtreme: 'Seek shelter immediately',
+    // Moon Phase descriptions
+    moonNewMoon: 'New Moon',
+    moonWaxingCrescent: 'Waxing Crescent',
+    moonFirstQuarter: 'First Quarter',
+    moonWaxingGibbous: 'Waxing Gibbous',
+    moonFullMoon: 'Full Moon',
+    moonWaningGibbous: 'Waning Gibbous',
+    moonLastQuarter: 'Last Quarter',
+    moonWaningCrescent: 'Waning Crescent',
+    moonDescNewMoon: 'Moon not visible from Earth',
+    moonDescWaxingCrescent: 'Growing crescent in western sky',
+    moonDescFirstQuarter: 'Half moon visible',
+    moonDescWaxingGibbous: 'More than half illuminated',
+    moonDescFullMoon: 'Fully illuminated face',
+    moonDescWaningGibbous: 'Decreasing from full',
+    moonDescLastQuarter: 'Half moon, opposite side lit',
+    moonDescWaningCrescent: 'Thin crescent before new moon',
+    moonIllumNewMoon: '0% illuminated - best for stargazing',
+    moonIllumWaxingCrescent: '1-49% illuminated - evening visibility',
+    moonIllumFirstQuarter: '50% illuminated - rises at noon',
+    moonIllumWaxingGibbous: '51-99% illuminated - bright evenings',
+    moonIllumFullMoon: '100% illuminated - rises at sunset',
+    moonIllumWaningGibbous: 'Decreasing - rises after sunset',
+    moonIllumLastQuarter: '50% illuminated - rises at midnight',
+    moonIllumWaningCrescent: 'Decreasing - early morning visibility',
   },
   ar: {
     title: 'تطبيق الطقس',
@@ -351,6 +632,287 @@ const translations = {
     switchToDarkMode: 'التبديل إلى الوضع الداكن',
     switchToLightMode: 'التبديل إلى الوضع الفاتح',
     getCurrentLocation: 'الحصول على الموقع الحالي',
+    // Detailed AQI health descriptions
+    aqiHealthGood: 'جودة الهواء مرضية، لا تشكل خطراً صحياً يُذكر',
+    aqiHealthModerate: 'جودة مقبولة، قلق صحي معتدل للأفراد الحساسين',
+    aqiHealthSensitive: 'قد تتأثر المجموعات الحساسة صحياً',
+    aqiHealthUnhealthy: 'قد يبدأ الجميع في الشعور بتأثيرات صحية',
+    aqiHealthVeryUnhealthy: 'تحذير صحي: قد يعاني الجميع من تأثيرات صحية خطيرة',
+    aqiHealthHazardous: 'طوارئ صحية: من المرجح تأثر جميع السكان',
+    // PM2.5 descriptions
+    pm25Good: 'جيد',
+    pm25Moderate: 'معتدل',
+    pm25Sensitive: 'غير صحي (للحساسين)',
+    pm25Unhealthy: 'غير صحي',
+    pm25VeryUnhealthy: 'غير صحي جداً',
+    pm25Hazardous: 'خطير',
+    pm25DescGood: 'خطر ضئيل أو معدوم',
+    pm25DescModerate: 'مقبول لمعظم الناس',
+    pm25DescSensitive: 'المجموعات الحساسة في خطر',
+    pm25DescUnhealthy: 'قد يتأثر الجميع',
+    pm25DescVeryUnhealthy: 'تأثيرات صحية خطيرة',
+    pm25DescHazardous: 'حالة طوارئ',
+    // PM10 description
+    pm10Desc: 'الغبار وحبوب اللقاح وجراثيم العفن',
+    // Ozone descriptions
+    o3Good: 'جيد',
+    o3Moderate: 'معتدل',
+    o3Sensitive: 'غير صحي (للحساسين)',
+    o3Unhealthy: 'غير صحي',
+    o3VeryUnhealthy: 'غير صحي جداً',
+    o3DescGood: 'لا تأثيرات صحية',
+    o3DescModerate: 'قد يتفاعل الحساسون بشكل غير معتاد',
+    o3DescSensitive: 'قلل من الجهد الخارجي المطول',
+    o3DescUnhealthy: 'تجنب الجهد الخارجي المطول',
+    o3DescVeryUnhealthy: 'تجنب أي جهد خارجي',
+    // NO2 descriptions
+    no2Good: 'جيد',
+    no2Moderate: 'معتدل',
+    no2Sensitive: 'غير صحي (للحساسين)',
+    no2Unhealthy: 'غير صحي',
+    no2VeryUnhealthy: 'غير صحي جداً',
+    no2DescGood: 'مستويات آمنة',
+    no2DescModerate: 'مقبول بشكل عام',
+    no2DescSensitive: 'قد يفاقم مشاكل الجهاز التنفسي',
+    no2DescUnhealthy: 'تهيج تنفسي محتمل',
+    no2DescVeryUnhealthy: 'تأثيرات تنفسية خطيرة',
+    // SO2 descriptions
+    so2Good: 'جيد',
+    so2Moderate: 'معتدل',
+    so2Sensitive: 'غير صحي (للحساسين)',
+    so2Unhealthy: 'غير صحي',
+    so2VeryUnhealthy: 'غير صحي جداً',
+    so2DescGood: 'لا قلق صحي',
+    so2DescModerate: 'مقبول لمعظم الناس',
+    so2DescSensitive: 'قد يتفاعل مرضى الربو',
+    so2DescUnhealthy: 'صعوبات في التنفس محتملة',
+    so2DescVeryUnhealthy: 'تأثيرات تنفسية خطيرة',
+    // CO descriptions
+    coGood: 'جيد',
+    coModerate: 'معتدل',
+    coSensitive: 'غير صحي (للحساسين)',
+    coUnhealthy: 'غير صحي',
+    coVeryUnhealthy: 'غير صحي جداً',
+    coDescGood: 'مستويات آمنة',
+    coDescModerate: 'آمن بشكل عام',
+    coDescSensitive: 'قد يتأثر مرضى القلب',
+    coDescUnhealthy: 'قد يؤثر على صحة القلب والأوعية الدموية',
+    coDescVeryUnhealthy: 'خطر صحي كبير',
+    // UV detailed descriptions
+    uvDescLow: 'لا حاجة للحماية',
+    uvDescModerate: 'ابحث عن الظل وقت الظهيرة',
+    uvDescHigh: 'قلل التعرض للشمس من 10 صباحاً إلى 4 مساءً',
+    uvDescVeryHigh: 'الحماية الإضافية ضرورية',
+    uvDescExtreme: 'البشرة غير المحمية تحترق بسرعة',
+    uvProtectionLow: 'ارتدِ نظارات شمسية في الأيام المشمسة',
+    uvProtectionModerate: 'استخدم واقي شمس SPF 30+ وارتدِ قبعة',
+    uvProtectionHigh: 'واقي شمس SPF 30+ والملابس الواقية ضرورية',
+    uvProtectionVeryHigh: 'واقي شمس SPF 50+، تجنب الشمس من 10 صباحاً إلى 4 مساءً',
+    uvProtectionExtreme: 'ابق في الداخل خلال ساعات الذروة، أقصى حماية',
+    // Humidity detailed descriptions
+    humidityDescVeryDry: 'رطوبة منخفضة للغاية',
+    humidityDescDry: 'مستويات رطوبة منخفضة',
+    humidityDescComfortable: 'نطاق رطوبة مثالي',
+    humidityDescSlightlyHumid: 'رطوبة مرتفعة قليلاً',
+    humidityDescHumid: 'رطوبة ملحوظة',
+    humidityDescVeryHumid: 'محتوى رطوبة عالي',
+    humidityDescOppressive: 'رطوبة عالية للغاية',
+    humidityHealthVeryDry: 'قد تسبب جفاف الجلد والعيون وتهيج الجهاز التنفسي',
+    humidityHealthDry: 'يُنصح باستخدام مرطب والترطيب',
+    humidityHealthComfortable: 'مثالي للصحة والراحة',
+    humidityHealthSlightlyHumid: 'مريح بشكل عام لمعظم الناس',
+    humidityHealthHumid: 'قد تشعر بالالتصاق، نمو العفن محتمل',
+    humidityHealthVeryHumid: 'عدم الراحة محتمل، حافظ على الترطيب',
+    humidityHealthOppressive: 'خطر الإنهاك الحراري، قلل النشاط الخارجي',
+    // Wind detailed descriptions
+    windDescCalm: 'الدخان يرتفع عمودياً',
+    windDescLightAir: 'الدخان ينجرف مع الرياح',
+    windDescLightBreeze: 'الرياح محسوسة على الوجه، الأوراق تحفحف',
+    windDescGentleBreeze: 'الأوراق والأغصان الصغيرة تتحرك',
+    windDescModerateBreeze: 'الفروع الصغيرة تتحرك، يثير الغبار',
+    windDescFreshBreeze: 'الأشجار الصغيرة تتمايل',
+    windDescStrongBreeze: 'الفروع الكبيرة تتحرك، صعوبة في استخدام المظلات',
+    windDescNearGale: 'الأشجار كلها تتمايل، صعوبة في المشي',
+    windDescGale: 'الأغصان تنكسر من الأشجار',
+    windDescStrongGale: 'أضرار هيكلية طفيفة محتملة',
+    windDescStorm: 'الأشجار تقتلع، أضرار كبيرة',
+    windDescViolentStorm: 'أضرار واسعة النطاق',
+    windDescHurricane: 'أضرار مدمرة',
+    // Beaufort scale labels
+    beaufort0: 'بيوفورت 0',
+    beaufort1: 'بيوفورت 1',
+    beaufort2: 'بيوفورت 2',
+    beaufort3: 'بيوفورت 3',
+    beaufort4: 'بيوفورت 4',
+    beaufort5: 'بيوفورت 5',
+    beaufort6: 'بيوفورت 6',
+    beaufort7: 'بيوفورت 7',
+    beaufort8: 'بيوفورت 8',
+    beaufort9: 'بيوفورت 9',
+    beaufort10: 'بيوفورت 10',
+    beaufort11: 'بيوفورت 11',
+    beaufort12: '+بيوفورت 12',
+    // Visibility detailed descriptions
+    visDescDenseFog: 'رؤية شبه معدومة',
+    visDescThickFog: 'الرؤية أقل من 200 متر',
+    visDescModerateFog: 'الرؤية أقل من 500 متر',
+    visDescLightFog: 'الرؤية أقل من 1 كم',
+    visDescMist: 'الرؤية 1-2 كم',
+    visDescHaze: 'الرؤية 2-4 كم',
+    visDescModerate: 'الرؤية 4-10 كم',
+    visDescGood: 'الرؤية 10-20 كم',
+    visDescExcellent: 'الرؤية أكثر من 20 كم',
+    visSafetyDenseFog: 'خطير للغاية للسفر',
+    visSafetyThickFog: 'الطرق مغلقة على الأرجح، تجنب السفر',
+    visSafetyModerateFog: 'خفض السرعة بشكل كبير، استخدم أضواء الضباب',
+    visSafetyLightFog: 'قُد بحذر، استخدم الأضواء المنخفضة',
+    visSafetyMist: 'رؤية منخفضة، ابق متيقظاً',
+    visSafetyHaze: 'غبش خفيف، قُد بشكل طبيعي',
+    visSafetyModerate: 'ظروف قيادة جيدة',
+    visSafetyGood: 'ظروف صافية للسفر',
+    visSafetyExcellent: 'ظروف صافية تماماً',
+    // Pressure detailed descriptions
+    pressureDescVeryLow: 'ظروف عاصفة محتملة',
+    pressureDescLow: 'طقس غير مستقر',
+    pressureDescBelowNormal: 'غير مستقر قليلاً',
+    pressureDescNormal: 'ظروف مستقرة',
+    pressureDescAboveNormal: 'ضغط عالي مستقر',
+    pressureDescHigh: 'غلاف جوي مستقر جداً',
+    pressureForecastVeryLow: 'توقع طقس قاسي، رياح قوية',
+    pressureForecastLow: 'أمطار أو عواصف قادمة على الأرجح',
+    pressureForecastBelowNormal: 'غائم مع احتمال هطول',
+    pressureForecastNormal: 'طقس جيد متوقع',
+    pressureForecastAboveNormal: 'ظروف صافية وجافة',
+    pressureForecastHigh: 'طقس جيد ممتد على الأرجح',
+    // Cloud descriptions
+    cloudClear: 'صافي',
+    cloudFew: 'سحب قليلة',
+    cloudScattered: 'سحب متفرقة',
+    cloudBroken: 'سحب متقطعة',
+    cloudMostly: 'غائم في الغالب',
+    cloudOvercast: 'ملبد بالغيوم',
+    cloudDescClear: 'سماء بلا غيوم تقريباً',
+    cloudDescFew: 'تغطية 1-2 أوكتا',
+    cloudDescScattered: 'تغطية 3-4 أوكتا',
+    cloudDescBroken: 'تغطية 5-7 أوكتا',
+    cloudDescMostly: 'تغطية 7-8 أوكتا',
+    cloudDescOvercast: 'تغطية سحابية كاملة',
+    cloudTypeClear: 'SKC (سماء صافية)',
+    cloudTypeFew: 'FEW',
+    cloudTypeScattered: 'SCT (متفرقة)',
+    cloudTypeBroken: 'BKN (متقطعة)',
+    cloudTypeMostly: 'BKN-OVC',
+    cloudTypeOvercast: 'OVC (ملبدة)',
+    // Precipitation descriptions
+    precipNone: 'لا هطول',
+    precipTrace: 'أثر',
+    precipLight: 'خفيف',
+    precipModerate: 'معتدل',
+    precipHeavy: 'غزير',
+    precipVeryHeavy: 'غزير جداً',
+    precipExtreme: 'شديد',
+    precipDescNone: 'لا هطول',
+    precipDescTrace: 'بالكاد قابل للقياس',
+    precipDescLight: 'هطول خفيف',
+    precipDescModerate: 'هطول مستقر',
+    precipDescHeavy: 'هطول غزير',
+    precipDescVeryHeavy: 'هطول شديد',
+    precipDescExtreme: 'هطول منهمر',
+    precipIntensityNone: 'ظروف جافة',
+    precipIntensityTrace: 'رذاذ خفيف جداً',
+    precipIntensityLight: 'رذاذ أو مطر خفيف',
+    precipIntensityModerate: 'مطر معتدل، مظلة مطلوبة',
+    precipIntensityHeavy: 'مطر غزير، فيضان محتمل',
+    precipIntensityVeryHeavy: 'مطر شديد، خطر فيضان مفاجئ',
+    precipIntensityExtreme: 'فيضان خطير محتمل',
+    // Feels Like descriptions
+    feelsAccurate: 'دقيق',
+    feelsSimilar: 'مشابه',
+    feelsWarmer: 'أدفأ',
+    feelsMuchWarmer: 'أدفأ بكثير',
+    feelsColder: 'أبرد',
+    feelsMuchColder: 'أبرد بكثير',
+    feelsDescAccurate: 'يشعر كما هو موضح',
+    feelsDescSimilar: 'قريب من الفعلي',
+    feelsDescWarmer: 'يشعر بأنه أدفأ من الفعلي',
+    feelsDescMuchWarmer: 'أدفأ بشكل ملحوظ',
+    feelsDescColder: 'يشعر بأنه أبرد من الفعلي',
+    feelsDescMuchColder: 'أبرد بشكل ملحوظ',
+    feelsCauseAccurate: 'تأثير الرياح والرطوبة ضئيل',
+    feelsCauseSimilar: 'عوامل بيئية طفيفة',
+    feelsCauseWarmer: 'الرطوبة العالية تحبس الحرارة',
+    feelsCauseMuchWarmer: 'رطوبة شديدة - تحذير مؤشر الحرارة',
+    feelsCauseColder: 'تأثير برودة الرياح',
+    feelsCauseMuchColder: 'برودة رياح قوية - خطر قضمة الصقيع',
+    // Dew Point descriptions
+    dewVeryDry: 'جاف جداً',
+    dewDry: 'جاف',
+    dewComfortable: 'مريح',
+    dewPleasant: 'لطيف',
+    dewSlightlyHumid: 'رطب قليلاً',
+    dewHumid: 'رطب',
+    dewVeryHumid: 'رطب جداً',
+    dewTropical: 'استوائي',
+    dewDescVeryDry: 'هواء جاف للغاية',
+    dewDescDry: 'جاف ولطيف',
+    dewDescComfortable: 'رطوبة مريحة',
+    dewDescPleasant: 'ظروف لطيفة',
+    dewDescSlightlyHumid: 'أصبحت ملحوظة',
+    dewDescHumid: 'ظروف رطبة',
+    dewDescVeryHumid: 'هواء رطب جداً',
+    dewDescTropical: 'مستويات رطوبة استوائية',
+    dewComfortVeryDry: 'قد يهيج الجلد والمجاري الهوائية',
+    dewComfortDry: 'ظروف مريحة جداً',
+    dewComfortComfortable: 'مثالي لمعظم الأنشطة',
+    dewComfortPleasant: 'مريح للأنشطة الخارجية',
+    dewComfortSlightlyHumid: 'قد تشعر بالرطوبة قليلاً',
+    dewComfortHumid: 'غير مريح لبعض الناس',
+    dewComfortVeryHumid: 'خانق، التعرق غير فعال',
+    dewComfortTropical: 'غير مريح بشدة، خطر حراري',
+    // Gust descriptions
+    gustSteady: 'مستقر',
+    gustLight: 'هبوب خفيفة',
+    gustGusty: 'متقلب',
+    gustVery: 'متقلب جداً',
+    gustDangerous: 'هبوب خطيرة',
+    gustExtreme: 'هبوب شديدة',
+    gustDescSteady: 'تدفق رياح ثابت',
+    gustDescLight: 'تغيرات طفيفة في الرياح',
+    gustDescGusty: 'هبوب ملحوظة',
+    gustDescVery: 'هبوب قوية مفاجئة',
+    gustDescDangerous: 'خطيرة محتملاً',
+    gustDescExtreme: 'خطيرة للغاية',
+    gustImpactSteady: 'ظروف رياح يمكن التنبؤ بها',
+    gustImpactLight: 'اندفاعات أقوى عرضية',
+    gustImpactGusty: 'قد تؤثر على التوازن والأشياء السائبة',
+    gustImpactVery: 'ظروف صعبة للأنشطة الخارجية',
+    gustImpactDangerous: 'خطر تلف الممتلكات، ابق متيقظاً',
+    gustImpactExtreme: 'ابحث عن مأوى فوراً',
+    // Moon Phase descriptions
+    moonNewMoon: 'قمر جديد',
+    moonWaxingCrescent: 'هلال متزايد',
+    moonFirstQuarter: 'الربع الأول',
+    moonWaxingGibbous: 'أحدب متزايد',
+    moonFullMoon: 'بدر',
+    moonWaningGibbous: 'أحدب متناقص',
+    moonLastQuarter: 'الربع الأخير',
+    moonWaningCrescent: 'هلال متناقص',
+    moonDescNewMoon: 'القمر غير مرئي من الأرض',
+    moonDescWaxingCrescent: 'هلال متزايد في السماء الغربية',
+    moonDescFirstQuarter: 'نصف القمر مرئي',
+    moonDescWaxingGibbous: 'أكثر من نصف مضيء',
+    moonDescFullMoon: 'وجه مضيء بالكامل',
+    moonDescWaningGibbous: 'يتناقص من البدر',
+    moonDescLastQuarter: 'نصف القمر، الجانب المقابل مضيء',
+    moonDescWaningCrescent: 'هلال رفيع قبل القمر الجديد',
+    moonIllumNewMoon: 'إضاءة 0% - الأفضل لمراقبة النجوم',
+    moonIllumWaxingCrescent: 'إضاءة 1-49% - رؤية مسائية',
+    moonIllumFirstQuarter: 'إضاءة 50% - يشرق عند الظهر',
+    moonIllumWaxingGibbous: 'إضاءة 51-99% - أمسيات مشرقة',
+    moonIllumFullMoon: 'إضاءة 100% - يشرق عند الغروب',
+    moonIllumWaningGibbous: 'يتناقص - يشرق بعد الغروب',
+    moonIllumLastQuarter: 'إضاءة 50% - يشرق عند منتصف الليل',
+    moonIllumWaningCrescent: 'يتناقص - رؤية صباحية مبكرة',
   }
 };
 
@@ -634,205 +1196,205 @@ function App() {
   const getAqiHealth = (aqi) => {
     if (!aqi || aqi < 1 || aqi > 6) return '';
     const health = [
-      'Air quality is satisfactory, poses little or no health risk',
-      'Acceptable quality, moderate health concern for sensitive individuals',
-      'Members of sensitive groups may experience health effects',
-      'Everyone may begin to experience health effects',
-      'Health alert: everyone may experience serious health effects',
-      'Health emergency: entire population is likely to be affected'
+      t('aqiHealthGood'),
+      t('aqiHealthModerate'),
+      t('aqiHealthSensitive'),
+      t('aqiHealthUnhealthy'),
+      t('aqiHealthVeryUnhealthy'),
+      t('aqiHealthHazardous')
     ];
     return health[aqi - 1];
   };
 
   // PM2.5 specific health levels
   const getPM25Label = (pm25) => {
-    if (pm25 === null || pm25 === undefined) return { label: 'Unknown', class: '', desc: '' };
-    if (pm25 <= 12) return { label: 'Good', class: 'pm-good', desc: 'Little to no risk' };
-    if (pm25 <= 35.4) return { label: 'Moderate', class: 'pm-moderate', desc: 'Acceptable for most' };
-    if (pm25 <= 55.4) return { label: 'Unhealthy (Sensitive)', class: 'pm-sensitive', desc: 'Sensitive groups at risk' };
-    if (pm25 <= 150.4) return { label: 'Unhealthy', class: 'pm-unhealthy', desc: 'Everyone may experience effects' };
-    if (pm25 <= 250.4) return { label: 'Very Unhealthy', class: 'pm-very-unhealthy', desc: 'Serious health effects' };
-    return { label: 'Hazardous', class: 'pm-hazardous', desc: 'Emergency conditions' };
+    if (pm25 === null || pm25 === undefined) return { label: t('unknown'), class: '', desc: '' };
+    if (pm25 <= 12) return { label: t('pm25Good'), class: 'pm-good', desc: t('pm25DescGood') };
+    if (pm25 <= 35.4) return { label: t('pm25Moderate'), class: 'pm-moderate', desc: t('pm25DescModerate') };
+    if (pm25 <= 55.4) return { label: t('pm25Sensitive'), class: 'pm-sensitive', desc: t('pm25DescSensitive') };
+    if (pm25 <= 150.4) return { label: t('pm25Unhealthy'), class: 'pm-unhealthy', desc: t('pm25DescUnhealthy') };
+    if (pm25 <= 250.4) return { label: t('pm25VeryUnhealthy'), class: 'pm-very-unhealthy', desc: t('pm25DescVeryUnhealthy') };
+    return { label: t('pm25Hazardous'), class: 'pm-hazardous', desc: t('pm25DescHazardous') };
   };
 
   // Ozone health levels
   const getOzoneLabel = (o3) => {
-    if (o3 === null || o3 === undefined) return { label: 'Unknown', class: '', desc: '' };
-    if (o3 <= 54) return { label: 'Good', class: 'o3-good', desc: 'No health impacts' };
-    if (o3 <= 70) return { label: 'Moderate', class: 'o3-moderate', desc: 'Unusually sensitive may react' };
-    if (o3 <= 85) return { label: 'Unhealthy (Sensitive)', class: 'o3-sensitive', desc: 'Reduce prolonged outdoor exertion' };
-    if (o3 <= 105) return { label: 'Unhealthy', class: 'o3-unhealthy', desc: 'Avoid prolonged outdoor exertion' };
-    return { label: 'Very Unhealthy', class: 'o3-very-unhealthy', desc: 'Avoid all outdoor exertion' };
+    if (o3 === null || o3 === undefined) return { label: t('unknown'), class: '', desc: '' };
+    if (o3 <= 54) return { label: t('o3Good'), class: 'o3-good', desc: t('o3DescGood') };
+    if (o3 <= 70) return { label: t('o3Moderate'), class: 'o3-moderate', desc: t('o3DescModerate') };
+    if (o3 <= 85) return { label: t('o3Sensitive'), class: 'o3-sensitive', desc: t('o3DescSensitive') };
+    if (o3 <= 105) return { label: t('o3Unhealthy'), class: 'o3-unhealthy', desc: t('o3DescUnhealthy') };
+    return { label: t('o3VeryUnhealthy'), class: 'o3-very-unhealthy', desc: t('o3DescVeryUnhealthy') };
   };
 
   // NO2 health levels
   const getNO2Label = (no2) => {
-    if (no2 === null || no2 === undefined) return { label: 'Unknown', class: '', desc: '' };
-    if (no2 <= 53) return { label: 'Good', class: 'no2-good', desc: 'Safe levels' };
-    if (no2 <= 100) return { label: 'Moderate', class: 'no2-moderate', desc: 'Generally acceptable' };
-    if (no2 <= 360) return { label: 'Unhealthy (Sensitive)', class: 'no2-sensitive', desc: 'May worsen respiratory issues' };
-    if (no2 <= 649) return { label: 'Unhealthy', class: 'no2-unhealthy', desc: 'Respiratory irritation likely' };
-    return { label: 'Very Unhealthy', class: 'no2-very-unhealthy', desc: 'Serious respiratory effects' };
+    if (no2 === null || no2 === undefined) return { label: t('unknown'), class: '', desc: '' };
+    if (no2 <= 53) return { label: t('no2Good'), class: 'no2-good', desc: t('no2DescGood') };
+    if (no2 <= 100) return { label: t('no2Moderate'), class: 'no2-moderate', desc: t('no2DescModerate') };
+    if (no2 <= 360) return { label: t('no2Sensitive'), class: 'no2-sensitive', desc: t('no2DescSensitive') };
+    if (no2 <= 649) return { label: t('no2Unhealthy'), class: 'no2-unhealthy', desc: t('no2DescUnhealthy') };
+    return { label: t('no2VeryUnhealthy'), class: 'no2-very-unhealthy', desc: t('no2DescVeryUnhealthy') };
   };
 
   // SO2 health levels
   const getSO2Label = (so2) => {
-    if (so2 === null || so2 === undefined) return { label: 'Unknown', class: '', desc: '' };
-    if (so2 <= 35) return { label: 'Good', class: 'so2-good', desc: 'No health concern' };
-    if (so2 <= 75) return { label: 'Moderate', class: 'so2-moderate', desc: 'Acceptable for most' };
-    if (so2 <= 185) return { label: 'Unhealthy (Sensitive)', class: 'so2-sensitive', desc: 'Asthmatics may react' };
-    if (so2 <= 304) return { label: 'Unhealthy', class: 'so2-unhealthy', desc: 'Breathing difficulties possible' };
-    return { label: 'Very Unhealthy', class: 'so2-very-unhealthy', desc: 'Serious respiratory effects' };
+    if (so2 === null || so2 === undefined) return { label: t('unknown'), class: '', desc: '' };
+    if (so2 <= 35) return { label: t('so2Good'), class: 'so2-good', desc: t('so2DescGood') };
+    if (so2 <= 75) return { label: t('so2Moderate'), class: 'so2-moderate', desc: t('so2DescModerate') };
+    if (so2 <= 185) return { label: t('so2Sensitive'), class: 'so2-sensitive', desc: t('so2DescSensitive') };
+    if (so2 <= 304) return { label: t('so2Unhealthy'), class: 'so2-unhealthy', desc: t('so2DescUnhealthy') };
+    return { label: t('so2VeryUnhealthy'), class: 'so2-very-unhealthy', desc: t('so2DescVeryUnhealthy') };
   };
 
   // CO health levels
   const getCOLabel = (co) => {
-    if (co === null || co === undefined) return { label: 'Unknown', class: '', desc: '' };
-    if (co <= 4400) return { label: 'Good', class: 'co-good', desc: 'Safe levels' };
-    if (co <= 9400) return { label: 'Moderate', class: 'co-moderate', desc: 'Generally safe' };
-    if (co <= 12400) return { label: 'Unhealthy (Sensitive)', class: 'co-sensitive', desc: 'Heart patients may be affected' };
-    if (co <= 15400) return { label: 'Unhealthy', class: 'co-unhealthy', desc: 'May affect cardiovascular health' };
-    return { label: 'Very Unhealthy', class: 'co-very-unhealthy', desc: 'Significant health risk' };
+    if (co === null || co === undefined) return { label: t('unknown'), class: '', desc: '' };
+    if (co <= 4400) return { label: t('coGood'), class: 'co-good', desc: t('coDescGood') };
+    if (co <= 9400) return { label: t('coModerate'), class: 'co-moderate', desc: t('coDescModerate') };
+    if (co <= 12400) return { label: t('coSensitive'), class: 'co-sensitive', desc: t('coDescSensitive') };
+    if (co <= 15400) return { label: t('coUnhealthy'), class: 'co-unhealthy', desc: t('coDescUnhealthy') };
+    return { label: t('coVeryUnhealthy'), class: 'co-very-unhealthy', desc: t('coDescVeryUnhealthy') };
   };
 
   // UV Index description (WHO Standard)
   const getUvLabel = (uv) => {
-    if (uv === null || uv === undefined) return { label: 'Unknown', class: '', desc: '', protection: '' };
-    if (uv <= 2) return { label: 'Low', class: 'uv-low', desc: 'No protection needed', protection: 'Wear sunglasses on bright days' };
-    if (uv <= 5) return { label: 'Moderate', class: 'uv-moderate', desc: 'Seek shade during midday', protection: 'Apply SPF 30+ sunscreen, wear hat' };
-    if (uv <= 7) return { label: 'High', class: 'uv-high', desc: 'Reduce sun exposure 10am-4pm', protection: 'SPF 30+ sunscreen, protective clothing required' };
-    if (uv <= 10) return { label: 'Very High', class: 'uv-very-high', desc: 'Extra protection essential', protection: 'SPF 50+ sunscreen, avoid sun 10am-4pm' };
-    return { label: 'Extreme', class: 'uv-extreme', desc: 'Unprotected skin burns quickly', protection: 'Stay indoors during peak hours, maximum protection' };
+    if (uv === null || uv === undefined) return { label: t('unknown'), class: '', desc: '', protection: '' };
+    if (uv <= 2) return { label: t('uvLow'), class: 'uv-low', desc: t('uvDescLow'), protection: t('uvProtectionLow') };
+    if (uv <= 5) return { label: t('uvModerate'), class: 'uv-moderate', desc: t('uvDescModerate'), protection: t('uvProtectionModerate') };
+    if (uv <= 7) return { label: t('uvHigh'), class: 'uv-high', desc: t('uvDescHigh'), protection: t('uvProtectionHigh') };
+    if (uv <= 10) return { label: t('uvVeryHigh'), class: 'uv-very-high', desc: t('uvDescVeryHigh'), protection: t('uvProtectionVeryHigh') };
+    return { label: t('uvExtreme'), class: 'uv-extreme', desc: t('uvDescExtreme'), protection: t('uvProtectionExtreme') };
   };
 
   // Humidity description with health impacts
   const getHumidityLabel = (humidity) => {
-    if (humidity === null || humidity === undefined) return { label: 'Unknown', class: '', desc: '', health: '' };
-    if (humidity < 25) return { label: 'Very Dry', class: 'humidity-very-dry', desc: 'Extremely low moisture', health: 'May cause dry skin, eyes, and respiratory irritation' };
-    if (humidity < 30) return { label: 'Dry', class: 'humidity-dry', desc: 'Low moisture levels', health: 'Moisturizer and hydration recommended' };
-    if (humidity <= 50) return { label: 'Comfortable', class: 'humidity-comfortable', desc: 'Ideal humidity range', health: 'Optimal for health and comfort' };
-    if (humidity <= 60) return { label: 'Slightly Humid', class: 'humidity-slight', desc: 'Slightly elevated moisture', health: 'Generally comfortable for most people' };
-    if (humidity <= 70) return { label: 'Humid', class: 'humidity-humid', desc: 'Noticeable humidity', health: 'May feel sticky, mold growth possible' };
-    if (humidity <= 80) return { label: 'Very Humid', class: 'humidity-very-humid', desc: 'High moisture content', health: 'Discomfort likely, stay hydrated' };
-    return { label: 'Oppressive', class: 'humidity-oppressive', desc: 'Extremely high humidity', health: 'Heat exhaustion risk, limit outdoor activity' };
+    if (humidity === null || humidity === undefined) return { label: t('unknown'), class: '', desc: '', health: '' };
+    if (humidity < 25) return { label: t('humidityVeryDry'), class: 'humidity-very-dry', desc: t('humidityDescVeryDry'), health: t('humidityHealthVeryDry') };
+    if (humidity < 30) return { label: t('humidityDry'), class: 'humidity-dry', desc: t('humidityDescDry'), health: t('humidityHealthDry') };
+    if (humidity <= 50) return { label: t('humidityComfortable'), class: 'humidity-comfortable', desc: t('humidityDescComfortable'), health: t('humidityHealthComfortable') };
+    if (humidity <= 60) return { label: t('humiditySlightlyHumid'), class: 'humidity-slight', desc: t('humidityDescSlightlyHumid'), health: t('humidityHealthSlightlyHumid') };
+    if (humidity <= 70) return { label: t('humidityHumid'), class: 'humidity-humid', desc: t('humidityDescHumid'), health: t('humidityHealthHumid') };
+    if (humidity <= 80) return { label: t('humidityVeryHumid'), class: 'humidity-very-humid', desc: t('humidityDescVeryHumid'), health: t('humidityHealthVeryHumid') };
+    return { label: t('humidityOppressive'), class: 'humidity-oppressive', desc: t('humidityDescOppressive'), health: t('humidityHealthOppressive') };
   };
 
   // Wind Speed description (Beaufort Scale)
   const getWindLabel = (windKph) => {
-    if (windKph === null || windKph === undefined) return { label: 'Unknown', class: '', desc: '', beaufort: '' };
-    if (windKph < 1) return { label: 'Calm', class: 'wind-calm', desc: 'Smoke rises vertically', beaufort: 'Beaufort 0' };
-    if (windKph <= 5) return { label: 'Light Air', class: 'wind-light-air', desc: 'Smoke drifts with wind', beaufort: 'Beaufort 1' };
-    if (windKph <= 11) return { label: 'Light Breeze', class: 'wind-light', desc: 'Wind felt on face, leaves rustle', beaufort: 'Beaufort 2' };
-    if (windKph <= 19) return { label: 'Gentle Breeze', class: 'wind-gentle', desc: 'Leaves and small twigs move', beaufort: 'Beaufort 3' };
-    if (windKph <= 28) return { label: 'Moderate Breeze', class: 'wind-moderate', desc: 'Small branches move, raises dust', beaufort: 'Beaufort 4' };
-    if (windKph <= 38) return { label: 'Fresh Breeze', class: 'wind-fresh', desc: 'Small trees sway', beaufort: 'Beaufort 5' };
-    if (windKph <= 49) return { label: 'Strong Breeze', class: 'wind-strong-breeze', desc: 'Large branches move, umbrellas difficult', beaufort: 'Beaufort 6' };
-    if (windKph <= 61) return { label: 'Near Gale', class: 'wind-near-gale', desc: 'Whole trees sway, difficult to walk', beaufort: 'Beaufort 7' };
-    if (windKph <= 74) return { label: 'Gale', class: 'wind-gale', desc: 'Twigs break off trees', beaufort: 'Beaufort 8' };
-    if (windKph <= 88) return { label: 'Strong Gale', class: 'wind-strong-gale', desc: 'Light structural damage possible', beaufort: 'Beaufort 9' };
-    if (windKph <= 102) return { label: 'Storm', class: 'wind-storm', desc: 'Trees uprooted, considerable damage', beaufort: 'Beaufort 10' };
-    if (windKph <= 117) return { label: 'Violent Storm', class: 'wind-violent', desc: 'Widespread damage', beaufort: 'Beaufort 11' };
-    return { label: 'Hurricane Force', class: 'wind-hurricane', desc: 'Devastating damage', beaufort: 'Beaufort 12+' };
+    if (windKph === null || windKph === undefined) return { label: t('unknown'), class: '', desc: '', beaufort: '' };
+    if (windKph < 1) return { label: t('windCalm'), class: 'wind-calm', desc: t('windDescCalm'), beaufort: t('beaufort0') };
+    if (windKph <= 5) return { label: t('windLightAir'), class: 'wind-light-air', desc: t('windDescLightAir'), beaufort: t('beaufort1') };
+    if (windKph <= 11) return { label: t('windLightBreeze'), class: 'wind-light', desc: t('windDescLightBreeze'), beaufort: t('beaufort2') };
+    if (windKph <= 19) return { label: t('windGentleBreeze'), class: 'wind-gentle', desc: t('windDescGentleBreeze'), beaufort: t('beaufort3') };
+    if (windKph <= 28) return { label: t('windModerateBreeze'), class: 'wind-moderate', desc: t('windDescModerateBreeze'), beaufort: t('beaufort4') };
+    if (windKph <= 38) return { label: t('windFreshBreeze'), class: 'wind-fresh', desc: t('windDescFreshBreeze'), beaufort: t('beaufort5') };
+    if (windKph <= 49) return { label: t('windStrongBreeze'), class: 'wind-strong-breeze', desc: t('windDescStrongBreeze'), beaufort: t('beaufort6') };
+    if (windKph <= 61) return { label: t('windNearGale'), class: 'wind-near-gale', desc: t('windDescNearGale'), beaufort: t('beaufort7') };
+    if (windKph <= 74) return { label: t('windGale'), class: 'wind-gale', desc: t('windDescGale'), beaufort: t('beaufort8') };
+    if (windKph <= 88) return { label: t('windStrongGale'), class: 'wind-strong-gale', desc: t('windDescStrongGale'), beaufort: t('beaufort9') };
+    if (windKph <= 102) return { label: t('windStorm'), class: 'wind-storm', desc: t('windDescStorm'), beaufort: t('beaufort10') };
+    if (windKph <= 117) return { label: t('windViolentStorm'), class: 'wind-violent', desc: t('windDescViolentStorm'), beaufort: t('beaufort11') };
+    return { label: t('windHurricane'), class: 'wind-hurricane', desc: t('windDescHurricane'), beaufort: t('beaufort12') };
   };
 
   // Visibility description with driving/aviation impact
   const getVisibilityLabel = (visKm) => {
-    if (visKm === null || visKm === undefined) return { label: 'Unknown', class: '', desc: '', safety: '' };
-    if (visKm < 0.05) return { label: 'Dense Fog', class: 'vis-dense-fog', desc: 'Near zero visibility', safety: 'Extremely dangerous for travel' };
-    if (visKm < 0.2) return { label: 'Thick Fog', class: 'vis-thick-fog', desc: 'Visibility under 200m', safety: 'Roads likely closed, avoid travel' };
-    if (visKm < 0.5) return { label: 'Moderate Fog', class: 'vis-mod-fog', desc: 'Visibility under 500m', safety: 'Reduce speed significantly, use fog lights' };
-    if (visKm < 1) return { label: 'Light Fog', class: 'vis-light-fog', desc: 'Visibility under 1km', safety: 'Drive with caution, low beams' };
-    if (visKm < 2) return { label: 'Mist', class: 'vis-mist', desc: 'Visibility 1-2km', safety: 'Reduced visibility, stay alert' };
-    if (visKm < 4) return { label: 'Haze', class: 'vis-haze', desc: 'Visibility 2-4km', safety: 'Light haze, drive normally' };
-    if (visKm < 10) return { label: 'Moderate', class: 'vis-moderate', desc: 'Visibility 4-10km', safety: 'Good driving conditions' };
-    if (visKm < 20) return { label: 'Good', class: 'vis-good', desc: 'Visibility 10-20km', safety: 'Clear conditions for travel' };
-    return { label: 'Excellent', class: 'vis-excellent', desc: 'Visibility over 20km', safety: 'Crystal clear conditions' };
+    if (visKm === null || visKm === undefined) return { label: t('unknown'), class: '', desc: '', safety: '' };
+    if (visKm < 0.05) return { label: t('visDenseFog'), class: 'vis-dense-fog', desc: t('visDescDenseFog'), safety: t('visSafetyDenseFog') };
+    if (visKm < 0.2) return { label: t('visThickFog'), class: 'vis-thick-fog', desc: t('visDescThickFog'), safety: t('visSafetyThickFog') };
+    if (visKm < 0.5) return { label: t('visModerateFog'), class: 'vis-mod-fog', desc: t('visDescModerateFog'), safety: t('visSafetyModerateFog') };
+    if (visKm < 1) return { label: t('visLightFog'), class: 'vis-light-fog', desc: t('visDescLightFog'), safety: t('visSafetyLightFog') };
+    if (visKm < 2) return { label: t('visMist'), class: 'vis-mist', desc: t('visDescMist'), safety: t('visSafetyMist') };
+    if (visKm < 4) return { label: t('visHaze'), class: 'vis-haze', desc: t('visDescHaze'), safety: t('visSafetyHaze') };
+    if (visKm < 10) return { label: t('visModerate'), class: 'vis-moderate', desc: t('visDescModerate'), safety: t('visSafetyModerate') };
+    if (visKm < 20) return { label: t('visGood'), class: 'vis-good', desc: t('visDescGood'), safety: t('visSafetyGood') };
+    return { label: t('visExcellent'), class: 'vis-excellent', desc: t('visDescExcellent'), safety: t('visSafetyExcellent') };
   };
 
   // Pressure description with weather prediction
   const getPressureLabel = (pressureMb) => {
-    if (pressureMb === null || pressureMb === undefined) return { label: 'Unknown', class: '', desc: '', forecast: '' };
-    if (pressureMb < 980) return { label: 'Very Low', class: 'pressure-very-low', desc: 'Storm conditions likely', forecast: 'Expect severe weather, strong winds' };
-    if (pressureMb < 1000) return { label: 'Low', class: 'pressure-low', desc: 'Unsettled weather', forecast: 'Rain or storms likely approaching' };
-    if (pressureMb < 1010) return { label: 'Below Normal', class: 'pressure-below', desc: 'Slightly unstable', forecast: 'Cloudy with possible precipitation' };
-    if (pressureMb <= 1020) return { label: 'Normal', class: 'pressure-normal', desc: 'Stable conditions', forecast: 'Fair weather expected' };
-    if (pressureMb <= 1030) return { label: 'Above Normal', class: 'pressure-above', desc: 'Stable high pressure', forecast: 'Clear and dry conditions' };
-    return { label: 'High', class: 'pressure-high', desc: 'Very stable atmosphere', forecast: 'Extended fair weather likely' };
+    if (pressureMb === null || pressureMb === undefined) return { label: t('unknown'), class: '', desc: '', forecast: '' };
+    if (pressureMb < 980) return { label: t('pressureVeryLow'), class: 'pressure-very-low', desc: t('pressureDescVeryLow'), forecast: t('pressureForecastVeryLow') };
+    if (pressureMb < 1000) return { label: t('pressureLow'), class: 'pressure-low', desc: t('pressureDescLow'), forecast: t('pressureForecastLow') };
+    if (pressureMb < 1010) return { label: t('pressureBelowNormal'), class: 'pressure-below', desc: t('pressureDescBelowNormal'), forecast: t('pressureForecastBelowNormal') };
+    if (pressureMb <= 1020) return { label: t('pressureNormal'), class: 'pressure-normal', desc: t('pressureDescNormal'), forecast: t('pressureForecastNormal') };
+    if (pressureMb <= 1030) return { label: t('pressureAboveNormal'), class: 'pressure-above', desc: t('pressureDescAboveNormal'), forecast: t('pressureForecastAboveNormal') };
+    return { label: t('pressureHigh'), class: 'pressure-high', desc: t('pressureDescHigh'), forecast: t('pressureForecastHigh') };
   };
 
   // Cloud Cover description
   const getCloudLabel = (cloud) => {
-    if (cloud === null || cloud === undefined) return { label: 'Unknown', class: '', desc: '', type: '' };
-    if (cloud <= 5) return { label: 'Clear', class: 'cloud-clear', desc: 'Virtually cloudless sky', type: 'SKC (Sky Clear)' };
-    if (cloud <= 25) return { label: 'Few Clouds', class: 'cloud-few', desc: '1-2 oktas coverage', type: 'FEW' };
-    if (cloud <= 50) return { label: 'Scattered', class: 'cloud-scattered', desc: '3-4 oktas coverage', type: 'SCT (Scattered)' };
-    if (cloud <= 75) return { label: 'Broken', class: 'cloud-broken', desc: '5-7 oktas coverage', type: 'BKN (Broken)' };
-    if (cloud <= 95) return { label: 'Mostly Cloudy', class: 'cloud-mostly', desc: '7-8 oktas coverage', type: 'BKN-OVC' };
-    return { label: 'Overcast', class: 'cloud-overcast', desc: 'Complete cloud coverage', type: 'OVC (Overcast)' };
+    if (cloud === null || cloud === undefined) return { label: t('unknown'), class: '', desc: '', type: '' };
+    if (cloud <= 5) return { label: t('cloudClear'), class: 'cloud-clear', desc: t('cloudDescClear'), type: t('cloudTypeClear') };
+    if (cloud <= 25) return { label: t('cloudFew'), class: 'cloud-few', desc: t('cloudDescFew'), type: t('cloudTypeFew') };
+    if (cloud <= 50) return { label: t('cloudScattered'), class: 'cloud-scattered', desc: t('cloudDescScattered'), type: t('cloudTypeScattered') };
+    if (cloud <= 75) return { label: t('cloudBroken'), class: 'cloud-broken', desc: t('cloudDescBroken'), type: t('cloudTypeBroken') };
+    if (cloud <= 95) return { label: t('cloudMostly'), class: 'cloud-mostly', desc: t('cloudDescMostly'), type: t('cloudTypeMostly') };
+    return { label: t('cloudOvercast'), class: 'cloud-overcast', desc: t('cloudDescOvercast'), type: t('cloudTypeOvercast') };
   };
 
   // Precipitation description with intensity
   const getPrecipLabel = (precipMm) => {
-    if (precipMm === null || precipMm === undefined) return { label: 'Unknown', class: '', desc: '', intensity: '' };
-    if (precipMm === 0) return { label: 'None', class: 'precip-none', desc: 'No precipitation', intensity: 'Dry conditions' };
-    if (precipMm < 0.5) return { label: 'Trace', class: 'precip-trace', desc: 'Barely measurable', intensity: 'Very light drizzle' };
-    if (precipMm < 2.5) return { label: 'Light', class: 'precip-light', desc: 'Light precipitation', intensity: 'Drizzle or light rain' };
-    if (precipMm < 7.5) return { label: 'Moderate', class: 'precip-moderate', desc: 'Steady precipitation', intensity: 'Moderate rain, umbrella needed' };
-    if (precipMm < 15) return { label: 'Heavy', class: 'precip-heavy', desc: 'Heavy precipitation', intensity: 'Heavy rain, flooding possible' };
-    if (precipMm < 30) return { label: 'Very Heavy', class: 'precip-very-heavy', desc: 'Intense precipitation', intensity: 'Severe rain, flash flood risk' };
-    return { label: 'Extreme', class: 'precip-extreme', desc: 'Torrential precipitation', intensity: 'Dangerous flooding likely' };
+    if (precipMm === null || precipMm === undefined) return { label: t('unknown'), class: '', desc: '', intensity: '' };
+    if (precipMm === 0) return { label: t('precipNone'), class: 'precip-none', desc: t('precipDescNone'), intensity: t('precipIntensityNone') };
+    if (precipMm < 0.5) return { label: t('precipTrace'), class: 'precip-trace', desc: t('precipDescTrace'), intensity: t('precipIntensityTrace') };
+    if (precipMm < 2.5) return { label: t('precipLight'), class: 'precip-light', desc: t('precipDescLight'), intensity: t('precipIntensityLight') };
+    if (precipMm < 7.5) return { label: t('precipModerate'), class: 'precip-moderate', desc: t('precipDescModerate'), intensity: t('precipIntensityModerate') };
+    if (precipMm < 15) return { label: t('precipHeavy'), class: 'precip-heavy', desc: t('precipDescHeavy'), intensity: t('precipIntensityHeavy') };
+    if (precipMm < 30) return { label: t('precipVeryHeavy'), class: 'precip-very-heavy', desc: t('precipDescVeryHeavy'), intensity: t('precipIntensityVeryHeavy') };
+    return { label: t('precipExtreme'), class: 'precip-extreme', desc: t('precipDescExtreme'), intensity: t('precipIntensityExtreme') };
   };
 
   // Feels Like description with cause
   const getFeelsLikeLabel = (actual, feelsLike) => {
     if (actual === null || actual === undefined || feelsLike === null || feelsLike === undefined) return { label: '', class: '', desc: '', cause: '' };
     const diff = feelsLike - actual;
-    if (Math.abs(diff) <= 1) return { label: 'Accurate', class: 'feels-accurate', desc: 'Feels as shown', cause: 'Minimal wind and humidity effect' };
-    if (Math.abs(diff) <= 3) return { label: 'Similar', class: 'feels-similar', desc: 'Close to actual', cause: 'Minor environmental factors' };
-    if (diff > 3 && diff <= 6) return { label: 'Warmer', class: 'feels-warmer', desc: 'Feels warmer than actual', cause: 'High humidity trapping heat' };
-    if (diff > 6) return { label: 'Much Warmer', class: 'feels-much-warmer', desc: 'Significantly warmer', cause: 'Extreme humidity - heat index warning' };
-    if (diff < -3 && diff >= -6) return { label: 'Colder', class: 'feels-colder', desc: 'Feels colder than actual', cause: 'Wind chill effect' };
-    return { label: 'Much Colder', class: 'feels-much-colder', desc: 'Significantly colder', cause: 'Strong wind chill - frostbite risk' };
+    if (Math.abs(diff) <= 1) return { label: t('feelsAccurate'), class: 'feels-accurate', desc: t('feelsDescAccurate'), cause: t('feelsCauseAccurate') };
+    if (Math.abs(diff) <= 3) return { label: t('feelsSimilar'), class: 'feels-similar', desc: t('feelsDescSimilar'), cause: t('feelsCauseSimilar') };
+    if (diff > 3 && diff <= 6) return { label: t('feelsWarmer'), class: 'feels-warmer', desc: t('feelsDescWarmer'), cause: t('feelsCauseWarmer') };
+    if (diff > 6) return { label: t('feelsMuchWarmer'), class: 'feels-much-warmer', desc: t('feelsDescMuchWarmer'), cause: t('feelsCauseMuchWarmer') };
+    if (diff < -3 && diff >= -6) return { label: t('feelsColder'), class: 'feels-colder', desc: t('feelsDescColder'), cause: t('feelsCauseColder') };
+    return { label: t('feelsMuchColder'), class: 'feels-much-colder', desc: t('feelsDescMuchColder'), cause: t('feelsCauseMuchColder') };
   };
 
   // Dew Point description with comfort
   const getDewPointLabel = (dewPoint) => {
-    if (dewPoint === null || dewPoint === undefined) return { label: 'Unknown', class: '', desc: '', comfort: '' };
-    if (dewPoint < 4) return { label: 'Very Dry', class: 'dew-very-dry', desc: 'Extremely dry air', comfort: 'May irritate skin and airways' };
-    if (dewPoint < 10) return { label: 'Dry', class: 'dew-dry', desc: 'Dry and pleasant', comfort: 'Very comfortable conditions' };
-    if (dewPoint < 13) return { label: 'Comfortable', class: 'dew-comfortable', desc: 'Comfortable humidity', comfort: 'Ideal for most activities' };
-    if (dewPoint < 16) return { label: 'Pleasant', class: 'dew-pleasant', desc: 'Pleasant conditions', comfort: 'Comfortable for outdoor activities' };
-    if (dewPoint < 18) return { label: 'Slightly Humid', class: 'dew-slight', desc: 'Becoming noticeable', comfort: 'May feel slightly muggy' };
-    if (dewPoint < 21) return { label: 'Humid', class: 'dew-humid', desc: 'Humid conditions', comfort: 'Uncomfortable for some people' };
-    if (dewPoint < 24) return { label: 'Very Humid', class: 'dew-very-humid', desc: 'Very humid air', comfort: 'Oppressive, sweating ineffective' };
-    return { label: 'Tropical', class: 'dew-tropical', desc: 'Tropical humidity levels', comfort: 'Severely uncomfortable, heat risk' };
+    if (dewPoint === null || dewPoint === undefined) return { label: t('unknown'), class: '', desc: '', comfort: '' };
+    if (dewPoint < 4) return { label: t('dewVeryDry'), class: 'dew-very-dry', desc: t('dewDescVeryDry'), comfort: t('dewComfortVeryDry') };
+    if (dewPoint < 10) return { label: t('dewDry'), class: 'dew-dry', desc: t('dewDescDry'), comfort: t('dewComfortDry') };
+    if (dewPoint < 13) return { label: t('dewComfortable'), class: 'dew-comfortable', desc: t('dewDescComfortable'), comfort: t('dewComfortComfortable') };
+    if (dewPoint < 16) return { label: t('dewPleasant'), class: 'dew-pleasant', desc: t('dewDescPleasant'), comfort: t('dewComfortPleasant') };
+    if (dewPoint < 18) return { label: t('dewSlightlyHumid'), class: 'dew-slight', desc: t('dewDescSlightlyHumid'), comfort: t('dewComfortSlightlyHumid') };
+    if (dewPoint < 21) return { label: t('dewHumid'), class: 'dew-humid', desc: t('dewDescHumid'), comfort: t('dewComfortHumid') };
+    if (dewPoint < 24) return { label: t('dewVeryHumid'), class: 'dew-very-humid', desc: t('dewDescVeryHumid'), comfort: t('dewComfortVeryHumid') };
+    return { label: t('dewTropical'), class: 'dew-tropical', desc: t('dewDescTropical'), comfort: t('dewComfortTropical') };
   };
 
   // Gust description with impact
   const getGustLabel = (gustKph, windKph) => {
-    if (gustKph === null || gustKph === undefined || windKph === null || windKph === undefined) return { label: 'Unknown', class: '', desc: '', impact: '' };
+    if (gustKph === null || gustKph === undefined || windKph === null || windKph === undefined) return { label: t('unknown'), class: '', desc: '', impact: '' };
     const ratio = gustKph / Math.max(windKph, 1);
     const gustSpeed = gustKph;
-    if (ratio < 1.2) return { label: 'Steady', class: 'gust-steady', desc: 'Consistent wind flow', impact: 'Predictable wind conditions' };
-    if (ratio < 1.4) return { label: 'Light Gusts', class: 'gust-light', desc: 'Minor wind variations', impact: 'Occasional stronger bursts' };
-    if (ratio < 1.6 && gustSpeed < 50) return { label: 'Gusty', class: 'gust-gusty', desc: 'Noticeable gusts', impact: 'May affect balance, loose items' };
-    if (ratio < 1.8 && gustSpeed < 70) return { label: 'Very Gusty', class: 'gust-very', desc: 'Strong sudden gusts', impact: 'Difficult conditions for outdoor activities' };
-    if (gustSpeed < 90) return { label: 'Dangerous Gusts', class: 'gust-dangerous', desc: 'Potentially dangerous', impact: 'Risk of property damage, stay alert' };
-    return { label: 'Extreme Gusts', class: 'gust-extreme', desc: 'Extremely dangerous', impact: 'Seek shelter immediately' };
+    if (ratio < 1.2) return { label: t('gustSteady'), class: 'gust-steady', desc: t('gustDescSteady'), impact: t('gustImpactSteady') };
+    if (ratio < 1.4) return { label: t('gustLight'), class: 'gust-light', desc: t('gustDescLight'), impact: t('gustImpactLight') };
+    if (ratio < 1.6 && gustSpeed < 50) return { label: t('gustGusty'), class: 'gust-gusty', desc: t('gustDescGusty'), impact: t('gustImpactGusty') };
+    if (ratio < 1.8 && gustSpeed < 70) return { label: t('gustVery'), class: 'gust-very', desc: t('gustDescVery'), impact: t('gustImpactVery') };
+    if (gustSpeed < 90) return { label: t('gustDangerous'), class: 'gust-dangerous', desc: t('gustDescDangerous'), impact: t('gustImpactDangerous') };
+    return { label: t('gustExtreme'), class: 'gust-extreme', desc: t('gustDescExtreme'), impact: t('gustImpactExtreme') };
   };
 
   // Moon Phase description
   const getMoonPhaseLabel = (phase) => {
     if (!phase) return { desc: '', illuminationDesc: '' };
     const phases = {
-      'New Moon': { desc: 'Moon not visible from Earth', illuminationDesc: '0% illuminated - best for stargazing' },
-      'Waxing Crescent': { desc: 'Growing crescent in western sky', illuminationDesc: '1-49% illuminated - evening visibility' },
-      'First Quarter': { desc: 'Half moon visible', illuminationDesc: '50% illuminated - rises at noon' },
-      'Waxing Gibbous': { desc: 'More than half illuminated', illuminationDesc: '51-99% illuminated - bright evenings' },
-      'Full Moon': { desc: 'Fully illuminated face', illuminationDesc: '100% illuminated - rises at sunset' },
-      'Waning Gibbous': { desc: 'Decreasing from full', illuminationDesc: 'Decreasing - rises after sunset' },
-      'Last Quarter': { desc: 'Half moon, opposite side lit', illuminationDesc: '50% illuminated - rises at midnight' },
-      'Waning Crescent': { desc: 'Thin crescent before new moon', illuminationDesc: 'Decreasing - early morning visibility' }
+      'New Moon': { desc: t('moonDescNewMoon'), illuminationDesc: t('moonIllumNewMoon') },
+      'Waxing Crescent': { desc: t('moonDescWaxingCrescent'), illuminationDesc: t('moonIllumWaxingCrescent') },
+      'First Quarter': { desc: t('moonDescFirstQuarter'), illuminationDesc: t('moonIllumFirstQuarter') },
+      'Waxing Gibbous': { desc: t('moonDescWaxingGibbous'), illuminationDesc: t('moonIllumWaxingGibbous') },
+      'Full Moon': { desc: t('moonDescFullMoon'), illuminationDesc: t('moonIllumFullMoon') },
+      'Waning Gibbous': { desc: t('moonDescWaningGibbous'), illuminationDesc: t('moonIllumWaningGibbous') },
+      'Last Quarter': { desc: t('moonDescLastQuarter'), illuminationDesc: t('moonIllumLastQuarter') },
+      'Waning Crescent': { desc: t('moonDescWaningCrescent'), illuminationDesc: t('moonIllumWaningCrescent') }
     };
     return phases[phase] || { desc: phase, illuminationDesc: '' };
   };
@@ -1117,7 +1679,7 @@ function App() {
                   <div className="aqi-item">
                     <span className="aqi-label">{t('coarseParticles')}</span>
                     <span className="aqi-value">{weather.current.air_quality.pm10 != null ? weather.current.air_quality.pm10.toFixed(1) : 'N/A'} µg/m³</span>
-                    <span className="aqi-desc">Dust, pollen, and mold spores</span>
+                    <span className="aqi-desc">{t('pm10Desc')}</span>
                   </div>
                   <div className="aqi-item">
                     <span className="aqi-label">{t('ozone')}</span>
