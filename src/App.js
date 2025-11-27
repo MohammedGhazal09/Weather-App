@@ -2,6 +2,346 @@ import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './App.css';
 
+// Translations object
+const translations = {
+  en: {
+    title: 'Weather App',
+    searchPlaceholder: 'Enter city name...',
+    search: 'Search',
+    searching: 'Searching...',
+    dark: 'Dark',
+    light: 'Light',
+    myLocation: 'My Location',
+    locating: 'Locating...',
+    switchToArabic: 'العربية',
+    switchToEnglish: 'English',
+    failedToFetch: 'Failed to fetch weather data. Please try again.',
+    cityNotFound: 'City not found. Please check the city name.',
+    locationNotFound: 'Location not found. Please try searching for a city.',
+    enterCity: 'Please enter a city name',
+    geolocationNotSupported: 'Geolocation is not supported by your browser',
+    locationPermissionDenied: 'Location permission denied.',
+    locationUnavailable: 'Location information unavailable.',
+    locationTimeout: 'Location request timed out.',
+    unknownError: 'An unknown error occurred.',
+    unableToGetLocation: 'Unable to get your location. ',
+    localTime: 'Local Time',
+    timezone: 'Timezone',
+    lastUpdated: 'Last Updated',
+    atmosphericConditions: '🌡️ Atmospheric Conditions',
+    windConditions: '💨 Wind Conditions',
+    uvPrecipitation: '☀️ UV & Precipitation',
+    airQualityIndex: '🌬️ Air Quality Index',
+    sunMoonAstronomy: '🌌 Sun & Moon Astronomy',
+    extendedForecast: '📅 14-Day Extended Forecast',
+    weatherAlerts: '⚠️ Weather Alerts & Warnings',
+    humidity: 'Humidity',
+    dewPoint: 'Dew Point',
+    pressure: 'Barometric Pressure',
+    cloudCover: 'Cloud Cover',
+    windSpeed: 'Wind Speed',
+    windDirection: 'Wind Direction',
+    windGust: 'Wind Gust',
+    visibility: 'Visibility',
+    uvIndex: 'UV Index',
+    precipitation: 'Precipitation',
+    sunrise: 'Sunrise',
+    sunset: 'Sunset',
+    moonrise: 'Moonrise',
+    moonset: 'Moonset',
+    moonPhase: 'Moon Phase',
+    moonIllumination: 'Moon Illumination',
+    rainChance: '💧 Rain Chance',
+    snowChance: '❄️ Snow Chance',
+    maxWind: '💨 Max Wind',
+    avgHumidity: '💧 Avg Humidity',
+    totalPrecip: '🌧️ Total Precip',
+    totalSnow: '❄️ Total Snow',
+    avgVisibility: '👁️ Avg Visibility',
+    severity: 'Severity',
+    urgency: 'Urgency',
+    affectedAreas: 'Affected Areas',
+    category: 'Category',
+    certainty: 'Certainty',
+    instructions: 'Instructions',
+    effective: 'Effective',
+    expires: 'Expires',
+    ukDefraIndex: 'UK DEFRA Index',
+    fineParticles: 'PM2.5 (Fine Particles)',
+    coarseParticles: 'PM10 (Coarse Particles)',
+    ozone: 'O₃ (Ground-level Ozone)',
+    nitrogenDioxide: 'NO₂ (Nitrogen Dioxide)',
+    sulfurDioxide: 'SO₂ (Sulfur Dioxide)',
+    carbonMonoxide: 'CO (Carbon Monoxide)',
+    aviation: 'Aviation',
+    feels: 'Feels',
+    lat: 'Lat',
+    lon: 'Lon',
+    beginningCivilTwilight: 'Beginning of civil twilight',
+    endCivilTwilight: 'End of civil twilight',
+    moonAppearsAbove: 'Moon appears above horizon',
+    moonDropsBelow: 'Moon drops below horizon',
+    windBlowingFrom: 'Wind blowing from the',
+    direction: 'direction',
+    fromNorth: 'from North',
+    // Temperature descriptions
+    tempFreezing: 'Freezing',
+    tempVeryCold: 'Very Cold',
+    tempCold: 'Cold',
+    tempCool: 'Cool',
+    tempComfortable: 'Comfortable',
+    tempWarm: 'Warm',
+    tempHot: 'Hot',
+    tempVeryHot: 'Very Hot',
+    tempExtreme: 'Extreme Heat',
+    tempDescFreezing: 'Extreme cold, frostbite risk',
+    tempDescVeryCold: 'Below freezing point',
+    tempDescCold: 'Winter clothing needed',
+    tempDescCool: 'Light jacket recommended',
+    tempDescComfortable: 'Ideal temperature range',
+    tempDescWarm: 'Light clothing appropriate',
+    tempDescHot: 'Stay hydrated',
+    tempDescVeryHot: 'Heat stress risk',
+    tempDescExtreme: 'Dangerous heat, stay indoors',
+    // Humidity descriptions
+    humidityVeryDry: 'Very Dry',
+    humidityDry: 'Dry',
+    humidityComfortable: 'Comfortable',
+    humiditySlightlyHumid: 'Slightly Humid',
+    humidityHumid: 'Humid',
+    humidityVeryHumid: 'Very Humid',
+    humidityOppressive: 'Oppressive',
+    // Wind descriptions
+    windCalm: 'Calm',
+    windLightAir: 'Light Air',
+    windLightBreeze: 'Light Breeze',
+    windGentleBreeze: 'Gentle Breeze',
+    windModerateBreeze: 'Moderate Breeze',
+    windFreshBreeze: 'Fresh Breeze',
+    windStrongBreeze: 'Strong Breeze',
+    windNearGale: 'Near Gale',
+    windGale: 'Gale',
+    windStrongGale: 'Strong Gale',
+    windStorm: 'Storm',
+    windViolentStorm: 'Violent Storm',
+    windHurricane: 'Hurricane Force',
+    // AQI descriptions
+    aqiGood: 'Good',
+    aqiModerate: 'Moderate',
+    aqiSensitive: 'Unhealthy for Sensitive',
+    aqiUnhealthy: 'Unhealthy',
+    aqiVeryUnhealthy: 'Very Unhealthy',
+    aqiHazardous: 'Hazardous',
+    // UV descriptions
+    uvLow: 'Low',
+    uvModerate: 'Moderate',
+    uvHigh: 'High',
+    uvVeryHigh: 'Very High',
+    uvExtreme: 'Extreme',
+    // Visibility descriptions
+    visDenseFog: 'Dense Fog',
+    visThickFog: 'Thick Fog',
+    visModerateFog: 'Moderate Fog',
+    visLightFog: 'Light Fog',
+    visMist: 'Mist',
+    visHaze: 'Haze',
+    visModerate: 'Moderate',
+    visGood: 'Good',
+    visExcellent: 'Excellent',
+    // Pressure descriptions
+    pressureVeryLow: 'Very Low',
+    pressureLow: 'Low',
+    pressureBelowNormal: 'Below Normal',
+    pressureNormal: 'Normal',
+    pressureAboveNormal: 'Above Normal',
+    pressureHigh: 'High',
+    // Weather summary helpers
+    hotDay: 'Hot day ahead',
+    warmConditions: 'Warm conditions',
+    pleasantTemps: 'Pleasant temps',
+    coolDay: 'Cool day',
+    coldConditions: 'Cold conditions',
+    expectWet: 'Expect wet conditions.',
+    cloudySkies: 'Cloudy skies expected.',
+    clearSkies: 'Clear skies.',
+    highRainChance: 'High rain chance',
+    moderateRainChance: 'Moderate rain chance',
+    slightRainChance: 'Slight rain chance',
+    extremeUV: 'Extreme UV!',
+    highUV: 'High UV.',
+    typicalConditions: 'Typical conditions for the day.',
+    unknown: 'Unknown',
+  },
+  ar: {
+    title: 'تطبيق الطقس',
+    searchPlaceholder: 'أدخل اسم المدينة...',
+    search: 'بحث',
+    searching: 'جاري البحث...',
+    dark: 'داكن',
+    light: 'فاتح',
+    myLocation: 'موقعي',
+    locating: 'جاري التحديد...',
+    switchToArabic: 'العربية',
+    switchToEnglish: 'English',
+    failedToFetch: 'فشل في جلب بيانات الطقس. يرجى المحاولة مرة أخرى.',
+    cityNotFound: 'المدينة غير موجودة. يرجى التحقق من اسم المدينة.',
+    locationNotFound: 'الموقع غير موجود. يرجى البحث عن مدينة.',
+    enterCity: 'يرجى إدخال اسم المدينة',
+    geolocationNotSupported: 'تحديد الموقع غير مدعوم في متصفحك',
+    locationPermissionDenied: 'تم رفض إذن الموقع.',
+    locationUnavailable: 'معلومات الموقع غير متاحة.',
+    locationTimeout: 'انتهت مهلة طلب الموقع.',
+    unknownError: 'حدث خطأ غير معروف.',
+    unableToGetLocation: 'تعذر الحصول على موقعك. ',
+    localTime: 'التوقيت المحلي',
+    timezone: 'المنطقة الزمنية',
+    lastUpdated: 'آخر تحديث',
+    atmosphericConditions: '🌡️ الأحوال الجوية',
+    windConditions: '💨 أحوال الرياح',
+    uvPrecipitation: '☀️ الأشعة فوق البنفسجية والهطول',
+    airQualityIndex: '🌬️ مؤشر جودة الهواء',
+    sunMoonAstronomy: '🌌 الشمس والقمر',
+    extendedForecast: '📅 توقعات 14 يوم',
+    weatherAlerts: '⚠️ تنبيهات الطقس',
+    humidity: 'الرطوبة',
+    dewPoint: 'نقطة الندى',
+    pressure: 'الضغط الجوي',
+    cloudCover: 'الغطاء السحابي',
+    windSpeed: 'سرعة الرياح',
+    windDirection: 'اتجاه الرياح',
+    windGust: 'هبوب الرياح',
+    visibility: 'الرؤية',
+    uvIndex: 'مؤشر الأشعة فوق البنفسجية',
+    precipitation: 'الهطول',
+    sunrise: 'شروق الشمس',
+    sunset: 'غروب الشمس',
+    moonrise: 'طلوع القمر',
+    moonset: 'غروب القمر',
+    moonPhase: 'مرحلة القمر',
+    moonIllumination: 'إضاءة القمر',
+    rainChance: '💧 احتمال المطر',
+    snowChance: '❄️ احتمال الثلج',
+    maxWind: '💨 أقصى رياح',
+    avgHumidity: '💧 متوسط الرطوبة',
+    totalPrecip: '🌧️ إجمالي الهطول',
+    totalSnow: '❄️ إجمالي الثلج',
+    avgVisibility: '👁️ متوسط الرؤية',
+    severity: 'الشدة',
+    urgency: 'الإلحاح',
+    affectedAreas: 'المناطق المتأثرة',
+    category: 'الفئة',
+    certainty: 'اليقين',
+    instructions: 'التعليمات',
+    effective: 'ساري من',
+    expires: 'ينتهي في',
+    ukDefraIndex: 'مؤشر DEFRA البريطاني',
+    fineParticles: 'PM2.5 (الجسيمات الدقيقة)',
+    coarseParticles: 'PM10 (الجسيمات الخشنة)',
+    ozone: 'O₃ (الأوزون الأرضي)',
+    nitrogenDioxide: 'NO₂ (ثاني أكسيد النيتروجين)',
+    sulfurDioxide: 'SO₂ (ثاني أكسيد الكبريت)',
+    carbonMonoxide: 'CO (أول أكسيد الكربون)',
+    aviation: 'الطيران',
+    feels: 'يشعر',
+    lat: 'خط العرض',
+    lon: 'خط الطول',
+    beginningCivilTwilight: 'بداية الشفق المدني',
+    endCivilTwilight: 'نهاية الشفق المدني',
+    moonAppearsAbove: 'القمر يظهر فوق الأفق',
+    moonDropsBelow: 'القمر ينزل تحت الأفق',
+    windBlowingFrom: 'الرياح تهب من',
+    direction: 'الاتجاه',
+    fromNorth: 'من الشمال',
+    // Temperature descriptions
+    tempFreezing: 'متجمد',
+    tempVeryCold: 'بارد جداً',
+    tempCold: 'بارد',
+    tempCool: 'معتدل البرودة',
+    tempComfortable: 'مريح',
+    tempWarm: 'دافئ',
+    tempHot: 'حار',
+    tempVeryHot: 'حار جداً',
+    tempExtreme: 'حرارة شديدة',
+    tempDescFreezing: 'برودة شديدة، خطر قضمة الصقيع',
+    tempDescVeryCold: 'تحت نقطة التجمد',
+    tempDescCold: 'ملابس شتوية مطلوبة',
+    tempDescCool: 'سترة خفيفة مستحسنة',
+    tempDescComfortable: 'نطاق درجة حرارة مثالي',
+    tempDescWarm: 'ملابس خفيفة مناسبة',
+    tempDescHot: 'حافظ على الترطيب',
+    tempDescVeryHot: 'خطر الإجهاد الحراري',
+    tempDescExtreme: 'حرارة خطيرة، ابق في الداخل',
+    // Humidity descriptions
+    humidityVeryDry: 'جاف جداً',
+    humidityDry: 'جاف',
+    humidityComfortable: 'مريح',
+    humiditySlightlyHumid: 'رطب قليلاً',
+    humidityHumid: 'رطب',
+    humidityVeryHumid: 'رطب جداً',
+    humidityOppressive: 'خانق',
+    // Wind descriptions
+    windCalm: 'هادئ',
+    windLightAir: 'نسيم خفيف جداً',
+    windLightBreeze: 'نسيم خفيف',
+    windGentleBreeze: 'نسيم لطيف',
+    windModerateBreeze: 'نسيم معتدل',
+    windFreshBreeze: 'نسيم منعش',
+    windStrongBreeze: 'نسيم قوي',
+    windNearGale: 'قريب من العاصفة',
+    windGale: 'عاصفة',
+    windStrongGale: 'عاصفة قوية',
+    windStorm: 'عاصفة شديدة',
+    windViolentStorm: 'عاصفة عنيفة',
+    windHurricane: 'قوة إعصار',
+    // AQI descriptions
+    aqiGood: 'جيد',
+    aqiModerate: 'معتدل',
+    aqiSensitive: 'غير صحي للحساسين',
+    aqiUnhealthy: 'غير صحي',
+    aqiVeryUnhealthy: 'غير صحي جداً',
+    aqiHazardous: 'خطير',
+    // UV descriptions
+    uvLow: 'منخفض',
+    uvModerate: 'معتدل',
+    uvHigh: 'مرتفع',
+    uvVeryHigh: 'مرتفع جداً',
+    uvExtreme: 'شديد',
+    // Visibility descriptions
+    visDenseFog: 'ضباب كثيف',
+    visThickFog: 'ضباب سميك',
+    visModerateFog: 'ضباب معتدل',
+    visLightFog: 'ضباب خفيف',
+    visMist: 'رذاذ',
+    visHaze: 'غبش',
+    visModerate: 'معتدل',
+    visGood: 'جيد',
+    visExcellent: 'ممتاز',
+    // Pressure descriptions
+    pressureVeryLow: 'منخفض جداً',
+    pressureLow: 'منخفض',
+    pressureBelowNormal: 'أقل من الطبيعي',
+    pressureNormal: 'طبيعي',
+    pressureAboveNormal: 'أعلى من الطبيعي',
+    pressureHigh: 'مرتفع',
+    // Weather summary helpers
+    hotDay: 'يوم حار قادم',
+    warmConditions: 'أجواء دافئة',
+    pleasantTemps: 'درجات حرارة لطيفة',
+    coolDay: 'يوم بارد',
+    coldConditions: 'أجواء باردة',
+    expectWet: 'توقع أجواء ممطرة.',
+    cloudySkies: 'سماء غائمة متوقعة.',
+    clearSkies: 'سماء صافية.',
+    highRainChance: 'احتمال مطر عالي',
+    moderateRainChance: 'احتمال مطر معتدل',
+    slightRainChance: 'احتمال مطر خفيف',
+    extremeUV: 'أشعة UV شديدة!',
+    highUV: 'أشعة UV مرتفعة.',
+    typicalConditions: 'أجواء نموذجية لهذا اليوم.',
+    unknown: 'غير معروف',
+  }
+};
+
 function App() {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
@@ -18,11 +358,22 @@ function App() {
       return 'light';
     }
   });
+  const [language, setLanguage] = useState(() => {
+    try {
+      const savedLang = localStorage.getItem('weatherAppLanguage');
+      return savedLang || 'en';
+    } catch {
+      return 'en';
+    }
+  });
   const [locationLoading, setLocationLoading] = useState(false);
   const [locationError, setLocationError] = useState('');
 
   const API_KEY = '16e76914aa244ae3bc8141253252511';
   const BASE_URL = 'https://api.weatherapi.com/v1';
+  
+  // Get translation helper - wrapped in useCallback to prevent unnecessary rerenders
+  const t = useCallback((key) => translations[language][key] || translations.en[key] || key, [language]);
 
   // Apply theme to document
   useEffect(() => {
@@ -34,9 +385,60 @@ function App() {
     }
   }, [theme]);
 
+  // Apply language direction
+  useEffect(() => {
+    document.documentElement.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', language);
+    try {
+      localStorage.setItem('weatherAppLanguage', language);
+    } catch {
+      // localStorage may be unavailable in some environments
+    }
+  }, [language]);
+
   const toggleTheme = () => {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
+
+  const toggleLanguage = () => {
+    setLanguage(prevLang => prevLang === 'en' ? 'ar' : 'en');
+  };
+
+  // Fetch weather by city
+  const fetchWeatherData = useCallback(async (searchCity) => {
+    setLoading(true);
+    setError('');
+    setSuggestions([]);
+
+    try {
+      const [currentRes, forecastRes, astronomyRes] = await Promise.all([
+        axios.get(`${BASE_URL}/current.json`, {
+          params: { key: API_KEY, q: searchCity, aqi: 'yes' }
+        }),
+        axios.get(`${BASE_URL}/forecast.json`, {
+          params: { key: API_KEY, q: searchCity, days: 14, alerts: 'yes' }
+        }),
+        axios.get(`${BASE_URL}/astronomy.json`, {
+          params: { key: API_KEY, q: searchCity, dt: new Date().toISOString().split('T')[0] }
+        })
+      ]);
+
+      setWeather(currentRes.data);
+      setForecast(forecastRes.data);
+      setAstronomy(astronomyRes.data);
+    } catch (err) {
+      if (err.response && err.response.status === 400) {
+        setError(t('cityNotFound'));
+      } else {
+        setError(t('failedToFetch'));
+      }
+      setWeather(null);
+      setForecast(null);
+      setAstronomy(null);
+    } finally {
+      setLoading(false);
+    }
+  }, [t]);
 
   // Fetch weather by coordinates
   const fetchWeatherByCoords = useCallback(async (lat, lon) => {
@@ -64,9 +466,9 @@ function App() {
       setCity(currentRes.data.location.name);
     } catch (err) {
       if (err.response && err.response.status === 400) {
-        setError('Location not found. Please try searching for a city.');
+        setError(t('locationNotFound'));
       } else {
-        setError('Failed to fetch weather data. Please try again.');
+        setError(t('failedToFetch'));
       }
       setWeather(null);
       setForecast(null);
@@ -74,7 +476,7 @@ function App() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [t]);
 
   // Get user's current location
   const getCurrentLocation = useCallback(() => {
@@ -82,7 +484,7 @@ function App() {
     setLocationError('');
 
     if (!navigator.geolocation) {
-      setLocationError('Geolocation is not supported by your browser');
+      setLocationError(t('geolocationNotSupported'));
       setLocationLoading(false);
       // Fallback to Riyadh
       fetchWeatherData('Riyadh');
@@ -96,19 +498,19 @@ function App() {
         setLocationLoading(false);
       },
       (err) => {
-        let errorMessage = 'Unable to get your location. ';
+        let errorMessage = t('unableToGetLocation');
         switch (err.code) {
           case err.PERMISSION_DENIED:
-            errorMessage += 'Location permission denied.';
+            errorMessage += t('locationPermissionDenied');
             break;
           case err.POSITION_UNAVAILABLE:
-            errorMessage += 'Location information unavailable.';
+            errorMessage += t('locationUnavailable');
             break;
           case err.TIMEOUT:
-            errorMessage += 'Location request timed out.';
+            errorMessage += t('locationTimeout');
             break;
           default:
-            errorMessage += 'An unknown error occurred.';
+            errorMessage += t('unknownError');
         }
         setLocationError(errorMessage);
         setLocationLoading(false);
@@ -121,47 +523,12 @@ function App() {
         maximumAge: 300000 // 5 minutes cache
       }
     );
-  }, [fetchWeatherByCoords]);
+  }, [fetchWeatherByCoords, fetchWeatherData, t]);
 
   useEffect(() => {
     // Try to get user's location on initial load
     getCurrentLocation();
   }, [getCurrentLocation]);
-
-  const fetchWeatherData = async (searchCity) => {
-    setLoading(true);
-    setError('');
-    setSuggestions([]);
-
-    try {
-      const [currentRes, forecastRes, astronomyRes] = await Promise.all([
-        axios.get(`${BASE_URL}/current.json`, {
-          params: { key: API_KEY, q: searchCity, aqi: 'yes' }
-        }),
-        axios.get(`${BASE_URL}/forecast.json`, {
-          params: { key: API_KEY, q: searchCity, days: 14, alerts: 'yes' }
-        }),
-        axios.get(`${BASE_URL}/astronomy.json`, {
-          params: { key: API_KEY, q: searchCity, dt: new Date().toISOString().split('T')[0] }
-        })
-      ]);
-
-      setWeather(currentRes.data);
-      setForecast(forecastRes.data);
-      setAstronomy(astronomyRes.data);
-    } catch (err) {
-      if (err.response && err.response.status === 400) {
-        setError('City not found. Please check the city name.');
-      } else {
-        setError('Failed to fetch weather data. Please try again.');
-      }
-      setWeather(null);
-      setForecast(null);
-      setAstronomy(null);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const searchCities = async (query) => {
     if (query.length < 2) {
@@ -194,7 +561,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!city.trim()) {
-      setError('Please enter a city name');
+      setError(t('enterCity'));
       return;
     }
     fetchWeatherData(city);
@@ -202,27 +569,27 @@ function App() {
 
   const formatDate = () => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date().toLocaleDateString('en-US', options);
+    return new Date().toLocaleDateString(language === 'ar' ? 'ar-SA' : 'en-US', options);
   };
 
   // Temperature description
   const getTempLabel = (tempC) => {
-    if (tempC === null || tempC === undefined) return { label: 'Unknown', class: '', desc: '' };
-    if (tempC < -10) return { label: 'Freezing', class: 'temp-freezing', desc: 'Extreme cold, frostbite risk' };
-    if (tempC < 0) return { label: 'Very Cold', class: 'temp-very-cold', desc: 'Below freezing point' };
-    if (tempC < 10) return { label: 'Cold', class: 'temp-cold', desc: 'Winter clothing needed' };
-    if (tempC < 18) return { label: 'Cool', class: 'temp-cool', desc: 'Light jacket recommended' };
-    if (tempC < 24) return { label: 'Comfortable', class: 'temp-comfortable', desc: 'Ideal temperature range' };
-    if (tempC < 30) return { label: 'Warm', class: 'temp-warm', desc: 'Light clothing appropriate' };
-    if (tempC < 35) return { label: 'Hot', class: 'temp-hot', desc: 'Stay hydrated' };
-    if (tempC < 40) return { label: 'Very Hot', class: 'temp-very-hot', desc: 'Heat stress risk' };
-    return { label: 'Extreme Heat', class: 'temp-extreme', desc: 'Dangerous heat, stay indoors' };
+    if (tempC === null || tempC === undefined) return { label: t('unknown'), class: '', desc: '' };
+    if (tempC < -10) return { label: t('tempFreezing'), class: 'temp-freezing', desc: t('tempDescFreezing') };
+    if (tempC < 0) return { label: t('tempVeryCold'), class: 'temp-very-cold', desc: t('tempDescVeryCold') };
+    if (tempC < 10) return { label: t('tempCold'), class: 'temp-cold', desc: t('tempDescCold') };
+    if (tempC < 18) return { label: t('tempCool'), class: 'temp-cool', desc: t('tempDescCool') };
+    if (tempC < 24) return { label: t('tempComfortable'), class: 'temp-comfortable', desc: t('tempDescComfortable') };
+    if (tempC < 30) return { label: t('tempWarm'), class: 'temp-warm', desc: t('tempDescWarm') };
+    if (tempC < 35) return { label: t('tempHot'), class: 'temp-hot', desc: t('tempDescHot') };
+    if (tempC < 40) return { label: t('tempVeryHot'), class: 'temp-very-hot', desc: t('tempDescVeryHot') };
+    return { label: t('tempExtreme'), class: 'temp-extreme', desc: t('tempDescExtreme') };
   };
 
   // Air Quality Index description with health impacts
   const getAqiLabel = (aqi) => {
-    if (!aqi || aqi < 1 || aqi > 6) return 'Unknown';
-    const labels = ['Good', 'Moderate', 'Unhealthy for Sensitive', 'Unhealthy', 'Very Unhealthy', 'Hazardous'];
+    if (!aqi || aqi < 1 || aqi > 6) return t('unknown');
+    const labels = [t('aqiGood'), t('aqiModerate'), t('aqiSensitive'), t('aqiUnhealthy'), t('aqiVeryUnhealthy'), t('aqiHazardous')];
     return labels[aqi - 1];
   };
 
@@ -449,40 +816,48 @@ function App() {
     let summary = '';
     
     // Temperature summary with range
-    if (maxTemp >= 35) summary += 'Hot day ahead (' + Math.round(minTemp) + '°-' + Math.round(maxTemp) + '°C). ';
-    else if (maxTemp >= 28) summary += 'Warm conditions (' + Math.round(minTemp) + '°-' + Math.round(maxTemp) + '°C). ';
-    else if (maxTemp >= 20) summary += 'Pleasant temps (' + Math.round(minTemp) + '°-' + Math.round(maxTemp) + '°C). ';
-    else if (maxTemp >= 10) summary += 'Cool day (' + Math.round(minTemp) + '°-' + Math.round(maxTemp) + '°C). ';
-    else summary += 'Cold conditions (' + Math.round(minTemp) + '°-' + Math.round(maxTemp) + '°C). ';
+    if (maxTemp >= 35) summary += t('hotDay') + ' (' + Math.round(minTemp) + '°-' + Math.round(maxTemp) + '°C). ';
+    else if (maxTemp >= 28) summary += t('warmConditions') + ' (' + Math.round(minTemp) + '°-' + Math.round(maxTemp) + '°C). ';
+    else if (maxTemp >= 20) summary += t('pleasantTemps') + ' (' + Math.round(minTemp) + '°-' + Math.round(maxTemp) + '°C). ';
+    else if (maxTemp >= 10) summary += t('coolDay') + ' (' + Math.round(minTemp) + '°-' + Math.round(maxTemp) + '°C). ';
+    else summary += t('coldConditions') + ' (' + Math.round(minTemp) + '°-' + Math.round(maxTemp) + '°C). ';
     
     // Condition summary
-    if (condition.includes('rain') || condition.includes('shower')) summary += 'Expect wet conditions. ';
-    else if (condition.includes('cloud')) summary += 'Cloudy skies expected. ';
-    else if (condition.includes('sun') || condition.includes('clear')) summary += 'Clear skies. ';
+    if (condition.includes('rain') || condition.includes('shower')) summary += t('expectWet') + ' ';
+    else if (condition.includes('cloud')) summary += t('cloudySkies') + ' ';
+    else if (condition.includes('sun') || condition.includes('clear')) summary += t('clearSkies') + ' ';
     
     // Rain summary
-    if (rainChance >= 70) summary += 'High rain chance (' + rainChance + '%). ';
-    else if (rainChance >= 40) summary += 'Moderate rain chance (' + rainChance + '%). ';
-    else if (rainChance >= 20) summary += 'Slight rain chance (' + rainChance + '%). ';
+    if (rainChance >= 70) summary += t('highRainChance') + ' (' + rainChance + '%). ';
+    else if (rainChance >= 40) summary += t('moderateRainChance') + ' (' + rainChance + '%). ';
+    else if (rainChance >= 20) summary += t('slightRainChance') + ' (' + rainChance + '%). ';
     
     // UV summary
-    if (uv >= 8) summary += 'Extreme UV!';
-    else if (uv >= 6) summary += 'High UV.';
+    if (uv >= 8) summary += t('extremeUV');
+    else if (uv >= 6) summary += t('highUV');
     
-    return summary || 'Typical conditions for the day.';
+    return summary || t('typicalConditions');
   };
 
   return (
-    <div className={`app ${theme}`}>
+    <div className={`app ${theme}`} dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container">
         <div className="header-controls">
+          <button 
+            className="language-toggle" 
+            onClick={toggleLanguage}
+            aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
+          >
+            🌐
+            <span className="language-label">{language === 'en' ? t('switchToArabic') : t('switchToEnglish')}</span>
+          </button>
           <button 
             className="theme-toggle" 
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
           >
             {theme === 'light' ? '🌙' : '☀️'}
-            <span className="theme-label">{theme === 'light' ? 'Dark' : 'Light'}</span>
+            <span className="theme-label">{theme === 'light' ? t('dark') : t('light')}</span>
           </button>
           <button 
             className="location-button" 
@@ -492,12 +867,12 @@ function App() {
           >
             {locationLoading ? '⏳' : '📍'}
             <span className="location-label">
-              {locationLoading ? 'Locating...' : 'My Location'}
+              {locationLoading ? t('locating') : t('myLocation')}
             </span>
           </button>
         </div>
 
-        <h1 className="title">Weather App</h1>
+        <h1 className="title">{t('title')}</h1>
         <p className="date">{formatDate()}</p>
 
         {locationError && <p className="location-notice">{locationError}</p>}
@@ -506,7 +881,7 @@ function App() {
           <div className="search-wrapper">
             <input
               type="text"
-              placeholder="Enter city name..."
+              placeholder={t('searchPlaceholder')}
               value={city}
               onChange={handleInputChange}
               className="search-input"
@@ -526,7 +901,7 @@ function App() {
             )}
           </div>
           <button type="submit" className="search-button" disabled={loading}>
-            {loading ? 'Searching...' : 'Search'}
+            {loading ? t('searching') : t('search')}
           </button>
         </form>
 
@@ -540,10 +915,10 @@ function App() {
                   {weather.location.name}, {weather.location.country}
                 </h2>
                 <p className="location-info">
-                  {weather.location.region} • Lat: {weather.location.lat}° Lon: {weather.location.lon}°
+                  {weather.location.region} • {t('lat')}: {weather.location.lat}° {t('lon')}: {weather.location.lon}°
                 </p>
-                <p className="local-time">Local Time: {weather.location.localtime}</p>
-                <p className="timezone-info">Timezone: {weather.location.tz_id}</p>
+                <p className="local-time">{t('localTime')}: {weather.location.localtime}</p>
+                <p className="timezone-info">{t('timezone')}: {weather.location.tz_id}</p>
               </div>
               <img
                 src={weather.current.condition.icon}
@@ -561,19 +936,19 @@ function App() {
               <p className="temp-advice">{getTempLabel(weather.current.temp_c).desc}</p>
               <p className="description">{weather.current.condition.text}</p>
               <div className={`feels-badge ${getFeelsLikeLabel(weather.current.temp_c, weather.current.feelslike_c).class}`}>
-                Feels {getFeelsLikeLabel(weather.current.temp_c, weather.current.feelslike_c).label}: {Math.round(weather.current.feelslike_c)}°C ({Math.round(weather.current.feelslike_f)}°F)
+                {t('feels')} {getFeelsLikeLabel(weather.current.temp_c, weather.current.feelslike_c).label}: {Math.round(weather.current.feelslike_c)}°C ({Math.round(weather.current.feelslike_f)}°F)
               </div>
               <p className="feels-cause">{getFeelsLikeLabel(weather.current.temp_c, weather.current.feelslike_c).cause}</p>
-              <p className="last-updated">Last Updated: {weather.current.last_updated}</p>
+              <p className="last-updated">{t('lastUpdated')}: {weather.current.last_updated}</p>
             </div>
 
             {/* Atmospheric Conditions */}
             <div className="section-container">
-              <h3 className="section-title">🌡️ Atmospheric Conditions</h3>
+              <h3 className="section-title">{t('atmosphericConditions')}</h3>
               <div className="weather-details-grid">
                 <div className="detail-card">
                   <span className="detail-icon">💧</span>
-                  <span className="detail-label">Humidity</span>
+                  <span className="detail-label">{t('humidity')}</span>
                   <span className="detail-value">{weather.current.humidity}%</span>
                   <span className={`detail-badge ${getHumidityLabel(weather.current.humidity).class}`}>
                     {getHumidityLabel(weather.current.humidity).label}
@@ -583,7 +958,7 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">🌡️</span>
-                  <span className="detail-label">Dew Point</span>
+                  <span className="detail-label">{t('dewPoint')}</span>
                   <span className="detail-value">{weather.current.dewpoint_c != null ? `${weather.current.dewpoint_c}°C` : 'N/A'}</span>
                   <span className="detail-sub">{weather.current.dewpoint_f != null ? `(${weather.current.dewpoint_f}°F)` : ''}</span>
                   <span className={`detail-badge ${getDewPointLabel(weather.current.dewpoint_c).class}`}>
@@ -594,7 +969,7 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">📊</span>
-                  <span className="detail-label">Barometric Pressure</span>
+                  <span className="detail-label">{t('pressure')}</span>
                   <span className="detail-value">{weather.current.pressure_mb} hPa</span>
                   <span className="detail-sub">({weather.current.pressure_in} inHg)</span>
                   <span className={`detail-badge ${getPressureLabel(weather.current.pressure_mb).class}`}>
@@ -605,24 +980,24 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">☁️</span>
-                  <span className="detail-label">Cloud Cover</span>
+                  <span className="detail-label">{t('cloudCover')}</span>
                   <span className="detail-value">{weather.current.cloud}%</span>
                   <span className={`detail-badge ${getCloudLabel(weather.current.cloud).class}`}>
                     {getCloudLabel(weather.current.cloud).label}
                   </span>
                   <span className="detail-desc">{getCloudLabel(weather.current.cloud).desc}</span>
-                  <span className="detail-type">Aviation: {getCloudLabel(weather.current.cloud).type}</span>
+                  <span className="detail-type">{t('aviation')}: {getCloudLabel(weather.current.cloud).type}</span>
                 </div>
               </div>
             </div>
 
             {/* Wind Conditions */}
             <div className="section-container wind-section">
-              <h3 className="section-title">💨 Wind Conditions</h3>
+              <h3 className="section-title">{t('windConditions')}</h3>
               <div className="weather-details-grid">
                 <div className="detail-card">
                   <span className="detail-icon">🌬️</span>
-                  <span className="detail-label">Wind Speed</span>
+                  <span className="detail-label">{t('windSpeed')}</span>
                   <span className="detail-value">{weather.current.wind_kph} km/h</span>
                   <span className="detail-sub">({weather.current.wind_mph} mph)</span>
                   <span className={`detail-badge ${getWindLabel(weather.current.wind_kph).class}`}>
@@ -633,14 +1008,14 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">🧭</span>
-                  <span className="detail-label">Wind Direction</span>
+                  <span className="detail-label">{t('windDirection')}</span>
                   <span className="detail-value">{weather.current.wind_dir}</span>
-                  <span className="detail-sub">{weather.current.wind_degree}° from North</span>
-                  <span className="detail-desc">Wind blowing from the {weather.current.wind_dir} direction</span>
+                  <span className="detail-sub">{weather.current.wind_degree}° {t('fromNorth')}</span>
+                  <span className="detail-desc">{t('windBlowingFrom')} {weather.current.wind_dir} {t('direction')}</span>
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">💥</span>
-                  <span className="detail-label">Wind Gust</span>
+                  <span className="detail-label">{t('windGust')}</span>
                   <span className="detail-value">{weather.current.gust_kph} km/h</span>
                   <span className="detail-sub">({weather.current.gust_mph} mph)</span>
                   <span className={`detail-badge ${getGustLabel(weather.current.gust_kph, weather.current.wind_kph).class}`}>
@@ -651,7 +1026,7 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">👁️</span>
-                  <span className="detail-label">Visibility</span>
+                  <span className="detail-label">{t('visibility')}</span>
                   <span className="detail-value">{weather.current.vis_km} km</span>
                   <span className="detail-sub">({weather.current.vis_miles} miles)</span>
                   <span className={`detail-badge ${getVisibilityLabel(weather.current.vis_km).class}`}>
@@ -665,11 +1040,11 @@ function App() {
 
             {/* UV & Precipitation */}
             <div className="section-container">
-              <h3 className="section-title">☀️ UV & Precipitation</h3>
+              <h3 className="section-title">{t('uvPrecipitation')}</h3>
               <div className="weather-details-grid">
                 <div className="detail-card">
                   <span className="detail-icon">🌞</span>
-                  <span className="detail-label">UV Index</span>
+                  <span className="detail-label">{t('uvIndex')}</span>
                   <span className="detail-value">{weather.current.uv}</span>
                   <span className={`detail-badge ${getUvLabel(weather.current.uv).class}`}>
                     {getUvLabel(weather.current.uv).label}
@@ -679,7 +1054,7 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">🌧️</span>
-                  <span className="detail-label">Precipitation</span>
+                  <span className="detail-label">{t('precipitation')}</span>
                   <span className="detail-value">{weather.current.precip_mm} mm</span>
                   <span className="detail-sub">({weather.current.precip_in} in)</span>
                   <span className={`detail-badge ${getPrecipLabel(weather.current.precip_mm).class}`}>
@@ -693,14 +1068,14 @@ function App() {
 
             {weather.current.air_quality && (
               <div className="aqi-section">
-                <h3 className="section-title">🌬️ Air Quality Index</h3>
+                <h3 className="section-title">{t('airQualityIndex')}</h3>
                 <div className={`aqi-badge ${getAqiClass(weather.current.air_quality['us-epa-index'])}`}>
                   {getAqiLabel(weather.current.air_quality['us-epa-index'])}
                 </div>
                 <p className="aqi-health-impact">{getAqiHealth(weather.current.air_quality['us-epa-index'])}</p>
                 <div className="aqi-grid">
                   <div className="aqi-item">
-                    <span className="aqi-label">PM2.5 (Fine Particles)</span>
+                    <span className="aqi-label">{t('fineParticles')}</span>
                     <span className="aqi-value">{weather.current.air_quality.pm2_5 != null ? weather.current.air_quality.pm2_5.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className={`aqi-item-badge ${getPM25Label(weather.current.air_quality.pm2_5).class}`}>
                       {getPM25Label(weather.current.air_quality.pm2_5).label}
@@ -708,12 +1083,12 @@ function App() {
                     <span className="aqi-desc">{getPM25Label(weather.current.air_quality.pm2_5).desc}</span>
                   </div>
                   <div className="aqi-item">
-                    <span className="aqi-label">PM10 (Coarse Particles)</span>
+                    <span className="aqi-label">{t('coarseParticles')}</span>
                     <span className="aqi-value">{weather.current.air_quality.pm10 != null ? weather.current.air_quality.pm10.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className="aqi-desc">Dust, pollen, and mold spores</span>
                   </div>
                   <div className="aqi-item">
-                    <span className="aqi-label">O₃ (Ground-level Ozone)</span>
+                    <span className="aqi-label">{t('ozone')}</span>
                     <span className="aqi-value">{weather.current.air_quality.o3 != null ? weather.current.air_quality.o3.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className={`aqi-item-badge ${getOzoneLabel(weather.current.air_quality.o3).class}`}>
                       {getOzoneLabel(weather.current.air_quality.o3).label}
@@ -721,7 +1096,7 @@ function App() {
                     <span className="aqi-desc">{getOzoneLabel(weather.current.air_quality.o3).desc}</span>
                   </div>
                   <div className="aqi-item">
-                    <span className="aqi-label">NO₂ (Nitrogen Dioxide)</span>
+                    <span className="aqi-label">{t('nitrogenDioxide')}</span>
                     <span className="aqi-value">{weather.current.air_quality.no2 != null ? weather.current.air_quality.no2.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className={`aqi-item-badge ${getNO2Label(weather.current.air_quality.no2).class}`}>
                       {getNO2Label(weather.current.air_quality.no2).label}
@@ -729,7 +1104,7 @@ function App() {
                     <span className="aqi-desc">{getNO2Label(weather.current.air_quality.no2).desc}</span>
                   </div>
                   <div className="aqi-item">
-                    <span className="aqi-label">SO₂ (Sulfur Dioxide)</span>
+                    <span className="aqi-label">{t('sulfurDioxide')}</span>
                     <span className="aqi-value">{weather.current.air_quality.so2 != null ? weather.current.air_quality.so2.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className={`aqi-item-badge ${getSO2Label(weather.current.air_quality.so2).class}`}>
                       {getSO2Label(weather.current.air_quality.so2).label}
@@ -737,7 +1112,7 @@ function App() {
                     <span className="aqi-desc">{getSO2Label(weather.current.air_quality.so2).desc}</span>
                   </div>
                   <div className="aqi-item">
-                    <span className="aqi-label">CO (Carbon Monoxide)</span>
+                    <span className="aqi-label">{t('carbonMonoxide')}</span>
                     <span className="aqi-value">{weather.current.air_quality.co != null ? weather.current.air_quality.co.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className={`aqi-item-badge ${getCOLabel(weather.current.air_quality.co).class}`}>
                       {getCOLabel(weather.current.air_quality.co).label}
@@ -746,48 +1121,48 @@ function App() {
                   </div>
                 </div>
                 {weather.current.air_quality['gb-defra-index'] && (
-                  <p className="aqi-extra">UK DEFRA Index: {weather.current.air_quality['gb-defra-index']}</p>
+                  <p className="aqi-extra">{t('ukDefraIndex')}: {weather.current.air_quality['gb-defra-index']}</p>
                 )}
               </div>
             )}
 
             {astronomy && (
               <div className="astronomy-section">
-                <h3 className="section-title">🌌 Sun & Moon Astronomy</h3>
+                <h3 className="section-title">{t('sunMoonAstronomy')}</h3>
                 <div className="astronomy-grid">
                   <div className="astronomy-item">
                     <span className="astronomy-icon">🌅</span>
-                    <span className="astronomy-label">Sunrise</span>
+                    <span className="astronomy-label">{t('sunrise')}</span>
                     <span className="astronomy-value">{astronomy.astronomy.astro.sunrise}</span>
-                    <span className="astronomy-desc">Beginning of civil twilight</span>
+                    <span className="astronomy-desc">{t('beginningCivilTwilight')}</span>
                   </div>
                   <div className="astronomy-item">
                     <span className="astronomy-icon">🌇</span>
-                    <span className="astronomy-label">Sunset</span>
+                    <span className="astronomy-label">{t('sunset')}</span>
                     <span className="astronomy-value">{astronomy.astronomy.astro.sunset}</span>
-                    <span className="astronomy-desc">End of civil twilight</span>
+                    <span className="astronomy-desc">{t('endCivilTwilight')}</span>
                   </div>
                   <div className="astronomy-item">
                     <span className="astronomy-icon">🌙</span>
-                    <span className="astronomy-label">Moonrise</span>
+                    <span className="astronomy-label">{t('moonrise')}</span>
                     <span className="astronomy-value">{astronomy.astronomy.astro.moonrise || 'N/A'}</span>
-                    <span className="astronomy-desc">Moon appears above horizon</span>
+                    <span className="astronomy-desc">{t('moonAppearsAbove')}</span>
                   </div>
                   <div className="astronomy-item">
                     <span className="astronomy-icon">🌑</span>
-                    <span className="astronomy-label">Moonset</span>
+                    <span className="astronomy-label">{t('moonset')}</span>
                     <span className="astronomy-value">{astronomy.astronomy.astro.moonset || 'N/A'}</span>
-                    <span className="astronomy-desc">Moon drops below horizon</span>
+                    <span className="astronomy-desc">{t('moonDropsBelow')}</span>
                   </div>
                   <div className="astronomy-item astronomy-item-wide">
                     <span className="astronomy-icon">🌓</span>
-                    <span className="astronomy-label">Moon Phase</span>
+                    <span className="astronomy-label">{t('moonPhase')}</span>
                     <span className="astronomy-value">{astronomy.astronomy.astro.moon_phase}</span>
                     <span className="astronomy-desc">{getMoonPhaseLabel(astronomy.astronomy.astro.moon_phase).desc}</span>
                   </div>
                   <div className="astronomy-item">
                     <span className="astronomy-icon">🌕</span>
-                    <span className="astronomy-label">Moon Illumination</span>
+                    <span className="astronomy-label">{t('moonIllumination')}</span>
                     <span className="astronomy-value">{astronomy.astronomy.astro.moon_illumination}%</span>
                     <span className="astronomy-desc">{getMoonPhaseLabel(astronomy.astronomy.astro.moon_phase).illuminationDesc}</span>
                   </div>
@@ -797,12 +1172,12 @@ function App() {
 
             {forecast && forecast.forecast && (
               <div className="forecast-section">
-                <h3 className="section-title">📅 14-Day Extended Forecast</h3>
+                <h3 className="section-title">{t('extendedForecast')}</h3>
                 <div className="forecast-scroll">
                   {forecast.forecast.forecastday.map((day, index) => (
                     <div key={index} className="forecast-card-detailed">
                       <p className="forecast-date">
-                        {new Date(day.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
+                        {new Date(day.date).toLocaleDateString(language === 'ar' ? 'ar-SA' : 'en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
                       </p>
                       <img src={day.day.condition.icon} alt={day.day.condition.text} className="forecast-icon" />
                       <p className="forecast-temp">
@@ -816,45 +1191,45 @@ function App() {
                       <p className="forecast-summary">{getDailySummary(day)}</p>
                       <div className="forecast-details">
                         <div className="forecast-detail-item">
-                          <span>💧 Rain Chance</span>
+                          <span>{t('rainChance')}</span>
                           <span>{day.day.daily_chance_of_rain}%</span>
                         </div>
                         <div className="forecast-detail-item">
-                          <span>❄️ Snow Chance</span>
+                          <span>{t('snowChance')}</span>
                           <span>{day.day.daily_chance_of_snow}%</span>
                         </div>
                         <div className="forecast-detail-item">
-                          <span>💨 Max Wind</span>
+                          <span>{t('maxWind')}</span>
                           <span>{day.day.maxwind_kph} km/h</span>
                         </div>
                         <div className="forecast-detail-item">
-                          <span>💧 Avg Humidity</span>
+                          <span>{t('avgHumidity')}</span>
                           <span>{day.day.avghumidity}%</span>
                         </div>
                         <div className="forecast-detail-item">
-                          <span>☀️ UV Index</span>
+                          <span>☀️ {t('uvIndex')}</span>
                           <span className={getUvLabel(day.day.uv).class}>{day.day.uv} ({getUvLabel(day.day.uv).label})</span>
                         </div>
                         <div className="forecast-detail-item">
-                          <span>🌧️ Total Precip</span>
+                          <span>{t('totalPrecip')}</span>
                           <span>{day.day.totalprecip_mm} mm</span>
                         </div>
                         <div className="forecast-detail-item">
-                          <span>❄️ Total Snow</span>
+                          <span>{t('totalSnow')}</span>
                           <span>{day.day.totalsnow_cm} cm</span>
                         </div>
                         <div className="forecast-detail-item">
-                          <span>👁️ Avg Visibility</span>
+                          <span>{t('avgVisibility')}</span>
                           <span>{day.day.avgvis_km} km</span>
                         </div>
                         {day.astro && (
                           <>
                             <div className="forecast-detail-item">
-                              <span>🌅 Sunrise</span>
+                              <span>🌅 {t('sunrise')}</span>
                               <span>{day.astro.sunrise}</span>
                             </div>
                             <div className="forecast-detail-item">
-                              <span>🌇 Sunset</span>
+                              <span>🌇 {t('sunset')}</span>
                               <span>{day.astro.sunset}</span>
                             </div>
                           </>
@@ -868,20 +1243,20 @@ function App() {
 
             {forecast && forecast.alerts && forecast.alerts.alert && forecast.alerts.alert.length > 0 && (
               <div className="alerts-section">
-                <h3 className="section-title">⚠️ Weather Alerts & Warnings</h3>
+                <h3 className="section-title">{t('weatherAlerts')}</h3>
                 {forecast.alerts.alert.map((alert, index) => (
                   <div key={index} className="alert-card">
                     <p className="alert-headline">{alert.headline}</p>
                     <p className="alert-event">{alert.event}</p>
-                    {alert.severity && <p className="alert-severity">Severity: {alert.severity}</p>}
-                    {alert.urgency && <p className="alert-urgency">Urgency: {alert.urgency}</p>}
-                    {alert.areas && <p className="alert-areas">Affected Areas: {alert.areas}</p>}
-                    {alert.category && <p className="alert-category">Category: {alert.category}</p>}
-                    {alert.certainty && <p className="alert-certainty">Certainty: {alert.certainty}</p>}
+                    {alert.severity && <p className="alert-severity">{t('severity')}: {alert.severity}</p>}
+                    {alert.urgency && <p className="alert-urgency">{t('urgency')}: {alert.urgency}</p>}
+                    {alert.areas && <p className="alert-areas">{t('affectedAreas')}: {alert.areas}</p>}
+                    {alert.category && <p className="alert-category">{t('category')}: {alert.category}</p>}
+                    {alert.certainty && <p className="alert-certainty">{t('certainty')}: {alert.certainty}</p>}
                     {alert.desc && <p className="alert-desc">{alert.desc}</p>}
-                    {alert.instruction && <p className="alert-instruction">Instructions: {alert.instruction}</p>}
-                    {alert.effective && <p className="alert-time">Effective: {alert.effective}</p>}
-                    {alert.expires && <p className="alert-time">Expires: {alert.expires}</p>}
+                    {alert.instruction && <p className="alert-instruction">{t('instructions')}: {alert.instruction}</p>}
+                    {alert.effective && <p className="alert-time">{t('effective')}: {alert.effective}</p>}
+                    {alert.expires && <p className="alert-time">{t('expires')}: {alert.expires}</p>}
                   </div>
                 ))}
               </div>

@@ -73,7 +73,8 @@
 }
 
 .theme-toggle,
-.location-button {
+.location-button,
+.language-toggle {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -86,13 +87,15 @@
   transition: all 0.3s ease;
 }
 
-.theme-toggle {
+.theme-toggle,
+.language-toggle {
   background: var(--section-bg);
   color: var(--text-primary);
   border: 2px solid var(--border-color);
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover,
+.language-toggle:hover {
   background: var(--card-bg);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -114,7 +117,8 @@
 }
 
 .theme-label,
-.location-label {
+.location-label,
+.language-label {
   font-size: 0.85rem;
 }
 
@@ -1070,4 +1074,55 @@
   .astronomy-item-wide {
     grid-column: span 1;
   }
+}
+
+/* RTL Support for Arabic */
+[dir="rtl"] {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+[dir="rtl"] .search-form {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .header-controls {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .weather-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .forecast-scroll {
+  direction: rtl;
+}
+
+[dir="rtl"] .forecast-details {
+  text-align: right;
+}
+
+[dir="rtl"] .detail-card,
+[dir="rtl"] .aqi-item,
+[dir="rtl"] .astronomy-item {
+  text-align: center;
+}
+
+[dir="rtl"] .theme-toggle,
+[dir="rtl"] .location-button,
+[dir="rtl"] .language-toggle {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .location-info,
+[dir="rtl"] .local-time,
+[dir="rtl"] .timezone-info {
+  text-align: right;
+}
+
+[dir="rtl"] .alert-card {
+  text-align: right;
+}
+
+[dir="rtl"] .suggestions {
+  text-align: right;
 }

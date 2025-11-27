@@ -37,7 +37,7 @@ test('renders Weather App title', async () => {
   await act(async () => {
     render(<App />);
   });
-  const titleElement = screen.getByText(/Weather App/i);
+  const titleElement = screen.getByText(/Weather App|تطبيق الطقس/i);
   expect(titleElement).toBeInTheDocument();
 });
 
@@ -45,7 +45,7 @@ test('renders search input', async () => {
   await act(async () => {
     render(<App />);
   });
-  const inputElement = screen.getByPlaceholderText(/Enter city name/i);
+  const inputElement = screen.getByPlaceholderText(/Enter city name|أدخل اسم المدينة/i);
   expect(inputElement).toBeInTheDocument();
 });
 
@@ -53,7 +53,7 @@ test('renders search button', async () => {
   await act(async () => {
     render(<App />);
   });
-  const buttonElement = screen.getByRole('button', { name: /Search/i });
+  const buttonElement = screen.getByRole('button', { name: /Search|بحث/i });
   expect(buttonElement).toBeInTheDocument();
 });
 
@@ -73,6 +73,14 @@ test('renders location button', async () => {
   expect(locationButton).toBeInTheDocument();
 });
 
+test('renders language toggle button', async () => {
+  await act(async () => {
+    render(<App />);
+  });
+  const languageButton = screen.getByRole('button', { name: /Switch to Arabic/i });
+  expect(languageButton).toBeInTheDocument();
+});
+
 test('shows error when submitting empty city', async () => {
   await act(async () => {
     render(<App />);
@@ -80,16 +88,16 @@ test('shows error when submitting empty city', async () => {
   
   // Wait for initial load attempt to complete
   await waitFor(() => {
-    expect(screen.getByRole('button', { name: /Search/i })).not.toBeDisabled();
+    expect(screen.getByRole('button', { name: /Search|بحث/i })).not.toBeDisabled();
   }, { timeout: 3000 });
   
-  const inputElement = screen.getByPlaceholderText(/Enter city name/i);
+  const inputElement = screen.getByPlaceholderText(/Enter city name|أدخل اسم المدينة/i);
   fireEvent.change(inputElement, { target: { value: '' } });
-  const buttonElement = screen.getByRole('button', { name: /Search/i });
+  const buttonElement = screen.getByRole('button', { name: /Search|بحث/i });
   fireEvent.click(buttonElement);
   
   await waitFor(() => {
-    const errorElement = screen.getByText(/Please enter a city name/i);
+    const errorElement = screen.getByText(/Please enter a city name|يرجى إدخال اسم المدينة/i);
     expect(errorElement).toBeInTheDocument();
   });
 });
