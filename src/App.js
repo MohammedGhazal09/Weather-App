@@ -84,6 +84,23 @@ const translations = {
     windBlowingFrom: 'Wind blowing from the',
     direction: 'direction',
     fromNorth: 'from North',
+    // Info tooltip explanations
+    infoDewPoint: 'Dew point is the temperature at which air becomes saturated with water vapor. Higher dew points feel more humid and uncomfortable.',
+    infoPressure: 'Barometric pressure measures atmospheric weight. Low pressure often brings storms; high pressure usually means clear skies.',
+    infoUvIndex: 'UV Index measures ultraviolet radiation from the sun. Higher values mean greater risk of skin damage and sunburn.',
+    infoPm25: 'PM2.5 are tiny particles (≤2.5 micrometers) that can penetrate deep into lungs and bloodstream. Sources include vehicle exhaust and smoke.',
+    infoPm10: 'PM10 are larger particles (≤10 micrometers) from dust, pollen, and mold. They can irritate airways and worsen respiratory conditions.',
+    infoOzone: 'Ground-level ozone (O₃) is created when sunlight reacts with pollutants. It can trigger asthma and reduce lung function.',
+    infoNo2: 'Nitrogen dioxide (NO₂) comes from vehicle engines and power plants. It inflames airways and worsens asthma symptoms.',
+    infoSo2: 'Sulfur dioxide (SO₂) is produced by burning fossil fuels. It irritates the respiratory system and contributes to acid rain.',
+    infoCo: 'Carbon monoxide (CO) is an odorless gas from incomplete combustion. It reduces oxygen delivery to organs and can be fatal at high levels.',
+    infoDefra: 'UK DEFRA Index is the UK\'s official air quality scale from 1-10. It combines multiple pollutants into a single health-based rating.',
+    infoAqi: 'Air Quality Index (AQI) measures overall air pollution. Higher numbers indicate worse air quality and greater health risks.',
+    infoVisibility: 'Visibility is the maximum distance at which objects can be clearly seen. It\'s affected by fog, rain, dust, and pollution.',
+    infoHumidity: 'Relative humidity is the percentage of water vapor in the air compared to the maximum possible. High humidity makes heat feel worse.',
+    infoCloudCover: 'Cloud cover percentage indicates how much of the sky is obscured by clouds. Aviation codes (SKC, FEW, SCT, BKN, OVC) are used by pilots.',
+    infoWindGust: 'Wind gusts are brief increases in wind speed above the sustained wind. Large differences between gusts and sustained winds can be dangerous.',
+    infoPrecipitation: 'Precipitation is any form of water falling from clouds, including rain, snow, sleet, and hail. Measured in millimeters or inches.',
     // Temperature descriptions
     tempFreezing: 'Freezing',
     tempVeryCold: 'Very Cold',
@@ -539,6 +556,23 @@ const translations = {
     windBlowingFrom: 'الرياح تهب من',
     direction: 'الاتجاه',
     fromNorth: 'من الشمال',
+    // Info tooltip explanations (Arabic)
+    infoDewPoint: 'نقطة الندى هي درجة الحرارة التي يصبح فيها الهواء مشبعاً ببخار الماء. نقاط الندى الأعلى تشعرك برطوبة أكثر وعدم راحة.',
+    infoPressure: 'الضغط الجوي يقيس وزن الغلاف الجوي. الضغط المنخفض غالباً يجلب العواصف؛ الضغط المرتفع عادة يعني سماء صافية.',
+    infoUvIndex: 'مؤشر الأشعة فوق البنفسجية يقيس الإشعاع فوق البنفسجي من الشمس. القيم الأعلى تعني خطر أكبر على الجلد وحروق الشمس.',
+    infoPm25: 'PM2.5 جسيمات دقيقة (≤2.5 ميكرومتر) تخترق الرئتين ومجرى الدم. مصادرها عوادم السيارات والدخان.',
+    infoPm10: 'PM10 جسيمات أكبر (≤10 ميكرومتر) من الغبار وحبوب اللقاح والعفن. تهيج الممرات الهوائية وتزيد مشاكل التنفس.',
+    infoOzone: 'الأوزون الأرضي (O₃) يتكون عندما يتفاعل ضوء الشمس مع الملوثات. يمكن أن يثير الربو ويقلل وظائف الرئة.',
+    infoNo2: 'ثاني أكسيد النيتروجين (NO₂) يأتي من محركات السيارات ومحطات الطاقة. يلهب الممرات الهوائية ويزيد أعراض الربو.',
+    infoSo2: 'ثاني أكسيد الكبريت (SO₂) ينتج من حرق الوقود الأحفوري. يهيج الجهاز التنفسي ويساهم في المطر الحمضي.',
+    infoCo: 'أول أكسيد الكربون (CO) غاز عديم الرائحة من الاحتراق غير الكامل. يقلل توصيل الأكسجين للأعضاء ويمكن أن يكون قاتلاً بمستويات عالية.',
+    infoDefra: 'مؤشر DEFRA البريطاني هو مقياس جودة الهواء الرسمي في المملكة المتحدة من 1-10. يجمع ملوثات متعددة في تصنيف صحي واحد.',
+    infoAqi: 'مؤشر جودة الهواء (AQI) يقيس تلوث الهواء الإجمالي. الأرقام الأعلى تشير إلى جودة هواء أسوأ ومخاطر صحية أكبر.',
+    infoVisibility: 'الرؤية هي أقصى مسافة يمكن رؤية الأشياء بوضوح. تتأثر بالضباب والمطر والغبار والتلوث.',
+    infoHumidity: 'الرطوبة النسبية هي نسبة بخار الماء في الهواء مقارنة بالحد الأقصى الممكن. الرطوبة العالية تجعل الحرارة تبدو أسوأ.',
+    infoCloudCover: 'نسبة الغطاء السحابي تشير إلى مقدار السماء المحجوب بالغيوم. رموز الطيران (SKC, FEW, SCT, BKN, OVC) يستخدمها الطيارون.',
+    infoWindGust: 'هبوب الرياح هي زيادات قصيرة في سرعة الرياح فوق الرياح المستمرة. الفروق الكبيرة بين الهبوب والرياح المستمرة يمكن أن تكون خطيرة.',
+    infoPrecipitation: 'الهطول هو أي شكل من الماء الساقط من الغيوم، بما في ذلك المطر والثلج والصقيع والبَرَد. يُقاس بالملليمتر أو البوصات.',
     // Temperature descriptions
     tempFreezing: 'متجمد',
     tempVeryCold: 'بارد جداً',
@@ -977,6 +1011,14 @@ function App() {
   const toggleLanguage = () => {
     setLanguage(prevLang => prevLang === 'en' ? 'ar' : 'en');
   };
+
+  // Info Tooltip component
+  const InfoTooltip = ({ infoKey }) => (
+    <span className="info-tooltip">
+      <span className="info-icon">ⓘ</span>
+      <span className="tooltip-text">{t(infoKey)}</span>
+    </span>
+  );
 
   // Fetch weather by city - using error codes to avoid t dependency
   const fetchWeatherData = useCallback(async (searchCity) => {
@@ -1542,7 +1584,7 @@ function App() {
               <div className="weather-details-grid">
                 <div className="detail-card">
                   <span className="detail-icon">💧</span>
-                  <span className="detail-label">{t('humidity')}</span>
+                  <span className="detail-label label-with-info">{t('humidity')}<InfoTooltip infoKey="infoHumidity" /></span>
                   <span className="detail-value">{weather.current.humidity}%</span>
                   <span className={`detail-badge ${getHumidityLabel(weather.current.humidity).class}`}>
                     {getHumidityLabel(weather.current.humidity).label}
@@ -1552,7 +1594,7 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">🌡️</span>
-                  <span className="detail-label">{t('dewPoint')}</span>
+                  <span className="detail-label label-with-info">{t('dewPoint')}<InfoTooltip infoKey="infoDewPoint" /></span>
                   <span className="detail-value">{weather.current.dewpoint_c != null ? `${weather.current.dewpoint_c}°C` : 'N/A'}</span>
                   <span className="detail-sub">{weather.current.dewpoint_f != null ? `(${weather.current.dewpoint_f}°F)` : ''}</span>
                   <span className={`detail-badge ${getDewPointLabel(weather.current.dewpoint_c).class}`}>
@@ -1563,7 +1605,7 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">📊</span>
-                  <span className="detail-label">{t('pressure')}</span>
+                  <span className="detail-label label-with-info">{t('pressure')}<InfoTooltip infoKey="infoPressure" /></span>
                   <span className="detail-value">{weather.current.pressure_mb} hPa</span>
                   <span className="detail-sub">({weather.current.pressure_in} inHg)</span>
                   <span className={`detail-badge ${getPressureLabel(weather.current.pressure_mb).class}`}>
@@ -1574,7 +1616,7 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">☁️</span>
-                  <span className="detail-label">{t('cloudCover')}</span>
+                  <span className="detail-label label-with-info">{t('cloudCover')}<InfoTooltip infoKey="infoCloudCover" /></span>
                   <span className="detail-value">{weather.current.cloud}%</span>
                   <span className={`detail-badge ${getCloudLabel(weather.current.cloud).class}`}>
                     {getCloudLabel(weather.current.cloud).label}
@@ -1609,7 +1651,7 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">💥</span>
-                  <span className="detail-label">{t('windGust')}</span>
+                  <span className="detail-label label-with-info">{t('windGust')}<InfoTooltip infoKey="infoWindGust" /></span>
                   <span className="detail-value">{weather.current.gust_kph} km/h</span>
                   <span className="detail-sub">({weather.current.gust_mph} mph)</span>
                   <span className={`detail-badge ${getGustLabel(weather.current.gust_kph, weather.current.wind_kph).class}`}>
@@ -1620,7 +1662,7 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">👁️</span>
-                  <span className="detail-label">{t('visibility')}</span>
+                  <span className="detail-label label-with-info">{t('visibility')}<InfoTooltip infoKey="infoVisibility" /></span>
                   <span className="detail-value">{weather.current.vis_km} km</span>
                   <span className="detail-sub">({weather.current.vis_miles} miles)</span>
                   <span className={`detail-badge ${getVisibilityLabel(weather.current.vis_km).class}`}>
@@ -1638,7 +1680,7 @@ function App() {
               <div className="weather-details-grid">
                 <div className="detail-card">
                   <span className="detail-icon">🌞</span>
-                  <span className="detail-label">{t('uvIndex')}</span>
+                  <span className="detail-label label-with-info">{t('uvIndex')}<InfoTooltip infoKey="infoUvIndex" /></span>
                   <span className="detail-value">{weather.current.uv}</span>
                   <span className={`detail-badge ${getUvLabel(weather.current.uv).class}`}>
                     {getUvLabel(weather.current.uv).label}
@@ -1648,7 +1690,7 @@ function App() {
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">🌧️</span>
-                  <span className="detail-label">{t('precipitation')}</span>
+                  <span className="detail-label label-with-info">{t('precipitation')}<InfoTooltip infoKey="infoPrecipitation" /></span>
                   <span className="detail-value">{weather.current.precip_mm} mm</span>
                   <span className="detail-sub">({weather.current.precip_in} in)</span>
                   <span className={`detail-badge ${getPrecipLabel(weather.current.precip_mm).class}`}>
@@ -1662,14 +1704,14 @@ function App() {
 
             {weather.current.air_quality && (
               <div className="aqi-section">
-                <h3 className="section-title">{t('airQualityIndex')}</h3>
+                <h3 className="section-title label-with-info">{t('airQualityIndex')}<InfoTooltip infoKey="infoAqi" /></h3>
                 <div className={`aqi-badge ${getAqiClass(weather.current.air_quality['us-epa-index'])}`}>
                   {getAqiLabel(weather.current.air_quality['us-epa-index'])}
                 </div>
                 <p className="aqi-health-impact">{getAqiHealth(weather.current.air_quality['us-epa-index'])}</p>
                 <div className="aqi-grid">
                   <div className="aqi-item">
-                    <span className="aqi-label">{t('fineParticles')}</span>
+                    <span className="aqi-label label-with-info">{t('fineParticles')}<InfoTooltip infoKey="infoPm25" /></span>
                     <span className="aqi-value">{weather.current.air_quality.pm2_5 != null ? weather.current.air_quality.pm2_5.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className={`aqi-item-badge ${getPM25Label(weather.current.air_quality.pm2_5).class}`}>
                       {getPM25Label(weather.current.air_quality.pm2_5).label}
@@ -1677,12 +1719,12 @@ function App() {
                     <span className="aqi-desc">{getPM25Label(weather.current.air_quality.pm2_5).desc}</span>
                   </div>
                   <div className="aqi-item">
-                    <span className="aqi-label">{t('coarseParticles')}</span>
+                    <span className="aqi-label label-with-info">{t('coarseParticles')}<InfoTooltip infoKey="infoPm10" /></span>
                     <span className="aqi-value">{weather.current.air_quality.pm10 != null ? weather.current.air_quality.pm10.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className="aqi-desc">{t('pm10Desc')}</span>
                   </div>
                   <div className="aqi-item">
-                    <span className="aqi-label">{t('ozone')}</span>
+                    <span className="aqi-label label-with-info">{t('ozone')}<InfoTooltip infoKey="infoOzone" /></span>
                     <span className="aqi-value">{weather.current.air_quality.o3 != null ? weather.current.air_quality.o3.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className={`aqi-item-badge ${getOzoneLabel(weather.current.air_quality.o3).class}`}>
                       {getOzoneLabel(weather.current.air_quality.o3).label}
@@ -1690,7 +1732,7 @@ function App() {
                     <span className="aqi-desc">{getOzoneLabel(weather.current.air_quality.o3).desc}</span>
                   </div>
                   <div className="aqi-item">
-                    <span className="aqi-label">{t('nitrogenDioxide')}</span>
+                    <span className="aqi-label label-with-info">{t('nitrogenDioxide')}<InfoTooltip infoKey="infoNo2" /></span>
                     <span className="aqi-value">{weather.current.air_quality.no2 != null ? weather.current.air_quality.no2.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className={`aqi-item-badge ${getNO2Label(weather.current.air_quality.no2).class}`}>
                       {getNO2Label(weather.current.air_quality.no2).label}
@@ -1698,7 +1740,7 @@ function App() {
                     <span className="aqi-desc">{getNO2Label(weather.current.air_quality.no2).desc}</span>
                   </div>
                   <div className="aqi-item">
-                    <span className="aqi-label">{t('sulfurDioxide')}</span>
+                    <span className="aqi-label label-with-info">{t('sulfurDioxide')}<InfoTooltip infoKey="infoSo2" /></span>
                     <span className="aqi-value">{weather.current.air_quality.so2 != null ? weather.current.air_quality.so2.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className={`aqi-item-badge ${getSO2Label(weather.current.air_quality.so2).class}`}>
                       {getSO2Label(weather.current.air_quality.so2).label}
@@ -1706,7 +1748,7 @@ function App() {
                     <span className="aqi-desc">{getSO2Label(weather.current.air_quality.so2).desc}</span>
                   </div>
                   <div className="aqi-item">
-                    <span className="aqi-label">{t('carbonMonoxide')}</span>
+                    <span className="aqi-label label-with-info">{t('carbonMonoxide')}<InfoTooltip infoKey="infoCo" /></span>
                     <span className="aqi-value">{weather.current.air_quality.co != null ? weather.current.air_quality.co.toFixed(1) : 'N/A'} µg/m³</span>
                     <span className={`aqi-item-badge ${getCOLabel(weather.current.air_quality.co).class}`}>
                       {getCOLabel(weather.current.air_quality.co).label}
@@ -1715,7 +1757,7 @@ function App() {
                   </div>
                 </div>
                 {weather.current.air_quality['gb-defra-index'] && (
-                  <p className="aqi-extra">{t('ukDefraIndex')}: {weather.current.air_quality['gb-defra-index']}</p>
+                  <p className="aqi-extra label-with-info">{t('ukDefraIndex')}: {weather.current.air_quality['gb-defra-index']}<InfoTooltip infoKey="infoDefra" /></p>
                 )}
               </div>
             )}
